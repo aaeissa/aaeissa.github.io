@@ -108,7 +108,7 @@
 <p>Because there are dozens of free collection tools that allow anyone to systematically harvest and analyze these public posts, the ubiquity of social media brings with it organizational risks that businesses are still learning how to mitigate.</p>
 <p><em>Recon-ng</em>, one of the more comprehensive tools, is a web reconnaissance framework that comes pre-installed with Kali Linux and can be used to automate the collection and visualization of social media posts that contain geographic metadata.</p>
 <p>Visualizing collected posts for a specificed geographic location can lead to some great insights, which recon-ng provides via its <em>pushpins</em> feature, which grabs location metadata (latitude, longitude) from geo-tagged posts in a defined radius and plots them with Google Maps.</p>
-<p><img alt="Map" src="/images/map2.jpg" /></p>
+<p><img alt="Map" src="./images/map2.jpg" /></p>
 <p>Tim Tomes, the author of recon-ng, has a great video (<a href="https://www.youtube.com/watch?v=BwopO7dxT98">Recon-ng Pushpin Intro</a>) which can quickly bring you up to speed on the feature before we make a small change to the source, and ultimately automate the framework's collection capabilities.</p>
 <p>Recon-ng comes with modules for pulling posts from Flickr, Instagram, Picasa, Shodan, Twitter, and Youtube. For the sake of simplicity (not to mention, <a href="https://dev.twitter.com/overview/api/tweets">a single tweet</a> has <em>a lot</em> of data), we'll just use Twitter. </p>
 <h2>Clone the Source</h2>
@@ -158,7 +158,7 @@
 <p>Remember, database interaction is the central mechanism in the recon-ng framework. Just like the <em>Keys</em> table for your API credentials, the <em>Locations</em> table allows users to store addresses and coordinates.</p>
 <p>Enter <code>add locations</code>. Assuming that you don't know the latititude and longitude of your target locations, skip those options when prompted (press enter), but specify an address.</p>
 <p>The <code>geocode</code> module will provide the exact latitude and longitude of the target address. Enter <code>load recon/locations-locations/geocode</code> and then <code>run</code>. The <code>show locations</code> command will print the <em>Locations</em> table, which should now have a completed row (latititude, longitude, address).</p>
-<p><img alt="Locations Table" src="../images/locations.jpg" /></p>
+<p><img alt="Locations Table" src="./images/locations.jpg" /></p>
 <h4>Twitter Search</h4>
 <p>The <code>twitter.py</code> module we modified will use Twitter's Search API to pull tweets that were created within close proximity to the target location. Load the module by entering <code>load recon/locations-pushpins/twitter</code> and then - you guessed it - <code>run</code>. </p>
 <p>Results are stored as <em>pushpins</em> for the map that we're going to produce at the end. </p>
