@@ -5,7 +5,7 @@
 &lt;p&gt;Because there are dozens of free collection tools that allow anyone to systematically harvest and analyze these public posts, the ubiquity of social media brings with it organizational risks that businesses are still learning how to mitigate.&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;Recon-ng&lt;/em&gt;, one of the more comprehensive tools, is a web reconnaissance framework that comes pre-installed with Kali Linux and can be used to automate the collection and visualization of social media posts that contain geographic metadata.&lt;/p&gt;
 &lt;p&gt;Visualizing collected posts for a specificed geographic location can lead to some great insights, which recon-ng provides via its &lt;em&gt;pushpins&lt;/em&gt; feature, which grabs location metadata (latitude, longitude) from geo-tagged posts in a defined radius and plots them with Google Maps.&lt;/p&gt;
-&lt;p&gt;&lt;img alt="Map" src="../images/map2.jpg" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Map" src="/images/map2.jpg" /&gt;&lt;/p&gt;
 &lt;p&gt;Tim Tomes, the author of recon-ng, has a great video (&lt;a href="https://www.youtube.com/watch?v=BwopO7dxT98"&gt;Recon-ng Pushpin Intro&lt;/a&gt;) which can quickly bring you up to speed on the feature before we make a small change to the source, and ultimately automate the framework's collection capabilities.&lt;/p&gt;
 &lt;p&gt;Recon-ng comes with modules for pulling posts from Flickr, Instagram, Picasa, Shodan, Twitter, and Youtube. For the sake of simplicity (not to mention, &lt;a href="https://dev.twitter.com/overview/api/tweets"&gt;a single tweet&lt;/a&gt; has &lt;em&gt;a lot&lt;/em&gt; of data), we'll just use Twitter. &lt;/p&gt;
 &lt;h2&gt;Clone the Source&lt;/h2&gt;
@@ -55,12 +55,12 @@
 &lt;p&gt;Remember, database interaction is the central mechanism in the recon-ng framework. Just like the &lt;em&gt;Keys&lt;/em&gt; table for your API credentials, the &lt;em&gt;Locations&lt;/em&gt; table allows users to store addresses and coordinates.&lt;/p&gt;
 &lt;p&gt;Enter &lt;code&gt;add locations&lt;/code&gt;. Assuming that you don't know the latititude and longitude of your target locations, skip those options when prompted (press enter), but specify an address.&lt;/p&gt;
 &lt;p&gt;The &lt;code&gt;geocode&lt;/code&gt; module will provide the exact latitude and longitude of the target address. Enter &lt;code&gt;load recon/locations-locations/geocode&lt;/code&gt; and then &lt;code&gt;run&lt;/code&gt;. The &lt;code&gt;show locations&lt;/code&gt; command will print the &lt;em&gt;Locations&lt;/em&gt; table, which should now have a completed row (latititude, longitude, address).&lt;/p&gt;
-&lt;p&gt;&lt;img alt="Locations Table" src="../images/locations.jpg" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Locations Table" src="/images/locations.jpg" /&gt;&lt;/p&gt;
 &lt;h4&gt;Twitter Search&lt;/h4&gt;
 &lt;p&gt;The &lt;code&gt;twitter.py&lt;/code&gt; module we modified will use Twitter's Search API to pull tweets that were created within close proximity to the target location. Load the module by entering &lt;code&gt;load recon/locations-pushpins/twitter&lt;/code&gt; and then - you guessed it - &lt;code&gt;run&lt;/code&gt;. &lt;/p&gt;
 &lt;p&gt;Results are stored as &lt;em&gt;pushpins&lt;/em&gt; for the map that we're going to produce at the end. &lt;/p&gt;
 &lt;p&gt;The &lt;code&gt;show dashboard&lt;/code&gt; command will present a brief overview of your activity and results, including how many times you've run each module in the current workspace, and how many pushpins (tweets, in our case) you've harvested.&lt;/p&gt;
-&lt;p&gt;&lt;img alt="Dashboard" src="../images/dashboard.jpg" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Dashboard" src="/images/dashboard.jpg" /&gt;&lt;/p&gt;
 &lt;h4&gt;Reporting &amp;amp; Visualizing&lt;/h4&gt;
 &lt;p&gt;Remember, the point of this exercise is to visualize the geotagged social media posts we've collected and plot them within a specified radius of our target locations. &lt;/p&gt;
 &lt;p&gt;Recon-ng's &lt;em&gt;reporting&lt;/em&gt; module makes this effortless. Enter these commands:&lt;/p&gt;
@@ -94,7 +94,7 @@
 &lt;p&gt;You should see the recon-ng framework start up and enter your specificed workspace, load and run the Twitter module, and exit. &lt;/p&gt;
 &lt;h4&gt;Creating a Cron Job&lt;/h4&gt;
 &lt;p&gt;Entering &lt;code&gt;sudo contab -e&lt;/code&gt; in your terminal will allow you to create new cron jobs, as well as edit any existing cron jobs you may have&lt;sup id="fnref:1"&gt;&lt;a class="footnote-ref" href="#fn:1" rel="footnote"&gt;1&lt;/a&gt;&lt;/sup&gt;. All cron jobs are added as a single line to the bottom of the file. &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Cron" src="../images/cron.jpg" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Cron" src="/images/cron.jpg" /&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;code&gt;* * * * *&lt;/code&gt;: runs every minute of every day&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;cd ~/recon-ng&lt;/code&gt;: enter the recon-ng directory&lt;/li&gt;
