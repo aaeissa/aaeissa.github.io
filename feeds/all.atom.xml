@@ -5,7 +5,7 @@
 &lt;p&gt;Because there are dozens of free collection tools that allow anyone to systematically harvest and analyze these public posts, the ubiquity of social media brings with it organizational risks that businesses are still learning how to mitigate.&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;Recon-ng&lt;/em&gt;, one of the more comprehensive tools, is a web reconnaissance framework that comes pre-installed with Kali Linux and can be used to automate the collection and visualization of social media posts that contain geographic metadata.&lt;/p&gt;
 &lt;p&gt;Visualizing collected posts for a specificed geographic location can lead to some great insights, which recon-ng provides via its &lt;em&gt;pushpins&lt;/em&gt; feature, which grabs location metadata (latitude, longitude) from geo-tagged posts in a defined radius and plots them with Google Maps.&lt;/p&gt;
-&lt;p&gt;&lt;img alt="Map" src="{recon_ng.md}/images/map2.jpg" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Map" src="{map2}/images/map2.jpg" /&gt;&lt;/p&gt;
 &lt;p&gt;Tim Tomes, the author of recon-ng, has a great video (&lt;a href="https://www.youtube.com/watch?v=BwopO7dxT98"&gt;Recon-ng Pushpin Intro&lt;/a&gt;) which can quickly bring you up to speed on the feature before we make a small change to the source, and ultimately automate the framework's collection capabilities.&lt;/p&gt;
 &lt;p&gt;Recon-ng comes with modules for pulling posts from Flickr, Instagram, Picasa, Shodan, Twitter, and Youtube. For the sake of simplicity (not to mention, &lt;a href="https://dev.twitter.com/overview/api/tweets"&gt;a single tweet&lt;/a&gt; has &lt;em&gt;a lot&lt;/em&gt; of data), we'll just use Twitter. &lt;/p&gt;
 &lt;h2&gt;Clone the Source&lt;/h2&gt;
