@@ -1,0 +1,253 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link href='//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,400italic' rel='stylesheet' type='text/css'>
+
+    <link rel="stylesheet" type="text/css" href="https://aaeissa.github.io/theme/stylesheet/style.min.css">
+
+  <link rel="stylesheet" type="text/css" href="https://aaeissa.github.io/theme/pygments/monokai.min.css">
+  <link rel="stylesheet" type="text/css" href="https://aaeissa.github.io/theme/font-awesome/css/font-awesome.min.css">
+
+
+    <link href="https://aaeissa.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Ahmed Eissa Atom">
+
+
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="" />
+
+    <!-- Chrome, Firefox OS and Opera -->
+    <meta name="theme-color" content="#333333">
+    <!-- Windows Phone -->
+    <meta name="msapplication-navbutton-color" content="#333333">
+    <!-- iOS Safari -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+<meta name="author" content="Ahmed Eissa" />
+<meta name="description" content="Automating the recon-ng framework for collecting and visualizing geotagged Twitter posts." />
+<meta name="keywords" content="OSINT, Python, Twitter">
+<meta property="og:site_name" content="Ahmed Eissa"/>
+<meta property="og:title" content="Automating Social Media Reconnaissance"/>
+<meta property="og:description" content="Automating the recon-ng framework for collecting and visualizing geotagged Twitter posts."/>
+<meta property="og:locale" content="en_US"/>
+<meta property="og:url" content="https://aaeissa.github.io/recon-ng.html"/>
+<meta property="og:type" content="article"/>
+<meta property="article:published_time" content="2017-06-05 12:00:00-04:00"/>
+<meta property="article:modified_time" content=""/>
+<meta property="article:author" content="https://aaeissa.github.io/author/ahmed-eissa.html">
+<meta property="article:section" content="Python"/>
+<meta property="article:tag" content="OSINT"/>
+<meta property="article:tag" content="Python"/>
+<meta property="article:tag" content="Twitter"/>
+<meta property="og:image" content="/images/profile_pic.jpeg">
+
+  <title>Ahmed Eissa &ndash; Automating Social Media Reconnaissance</title>
+
+</head>
+<body>
+  <aside>
+    <div>
+      <a href="https://aaeissa.github.io">
+        <img src="/images/profile_pic.jpeg" alt="" title="">
+      </a>
+      <h1><a href="https://aaeissa.github.io"></a></h1>
+
+<p>Policy & Python</p>
+      <nav>
+        <ul class="list">
+          <li><a href="https://aaeissa.github.io/pages/About.html#About">About</a></li>
+          <li><a href="https://aaeissa.github.io/pages/Tech Policy Issues.html#Tech Policy Issues">Current Issues</a></li>
+
+        </ul>
+      </nav>
+
+      <ul class="social">
+        <li><a class="sc-twitter" href="https://twitter.com/Ahmed_A_Eissa" target="_blank"><i class="fa fa-twitter"></i></a></li>
+        <li><a class="sc-linkedin" href="https://www.linkedin.com/in/ahmed-a-eissa/" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+        <li><a class="sc-github" href="https://github.com/aaeissa" target="_blank"><i class="fa fa-github"></i></a></li>
+      </ul>
+    </div>
+
+
+  </aside>
+  <main>
+
+    <nav>
+      <a href="https://aaeissa.github.io">    Home
+</a>
+
+      <a href="/archives.html">Archives</a>
+      <a href="/categories.html">Categories</a>
+      <a href="/tags.html">Tags</a>
+
+      <a href="https://aaeissa.github.io/feeds/all.atom.xml">    Atom
+</a>
+
+    </nav>
+
+<article class="single">
+  <header>
+    <h1 id="recon-ng">Automating Social Media Reconnaissance</h1>
+    <p>
+          Posted on Mon 05 June 2017 in <a href="https://aaeissa.github.io/category/python.html">Python</a>
+
+
+    </p>
+  </header>
+
+
+  <div>
+    <h2>Risk in the Age of Social Media</h2>
+<p>Consider this: maybe your LinkedIn profile is a little <em>too</em> detailed, and maybe you should stop attaching your location to your tweets, especially while at work. </p>
+<p>Social media is a rich source of open source intellgience (OSINT), and measuring social media exposure is becoming progressively more common in penetration testing and operational security.</p>
+<p>Because there are dozens of free collection tools that allow anyone to systematically harvest and analyze these public posts, the ubiquity of social media brings with it organizational risks that businesses are still learning how to mitigate.</p>
+<p><em>Recon-ng</em>, one of the more comprehensive tools, is a web reconnaissance framework that comes pre-installed with Kali Linux and can be used to automate the collection and visualization of social media posts that contain geographic metadata.</p>
+<p>Visualizing collected posts for a specificed geographic location can lead to some great insights, which recon-ng provides via its <em>pushpins</em> feature, which grabs location metadata (latitude, longitude) from geo-tagged posts in a defined radius and plots them with Google Maps.</p>
+<p><img alt="Map" src="../images/map2.jpg" /></p>
+<p>Tim Tomes, the author of recon-ng, has a great video (<a href="https://www.youtube.com/watch?v=BwopO7dxT98">Recon-ng Pushpin Intro</a>) which can quickly bring you up to speed on the feature before we make a small change to the source, and ultimately automate the framework's collection capabilities.</p>
+<p>Recon-ng comes with modules for pulling posts from Flickr, Instagram, Picasa, Shodan, Twitter, and Youtube. For the sake of simplicity (not to mention, <a href="https://dev.twitter.com/overview/api/tweets">a single tweet</a> has <em>a lot</em> of data), we'll just use Twitter. </p>
+<h2>Clone the Source</h2>
+<p>There's a small problem with recon-ng's default Twitter module. By default, every <code>GET</code> request to Twitter's Search API returns 15 tweets per page. But to get the most out of our collection, it's in our interest to raise the limit. </p>
+<p>Open up a terminal in your Kali Linux VM and enter <code>git clone https://bitbucket.org/LaNMaSteR53/recon-ng.git</code> to clone the source onto your machine.</p>
+<p>The file structure should (roughly) look like this:</p>
+<blockquote>
+<p>-- recon-ng<br />
+| -- data/<br />
+| -- modules/<br />
+| -- recon/<br />
+| -- recon-cli<br />
+| -- recon-ng<br />
+| -- recon-rpc<br />
+| -- recon-web  </p>
+</blockquote>
+<h2>Modify the Twitter Module</h2>
+<p>To retrieve more than the default number of tweets per page (15), we need to add a <code>count</code> paramter to the <code>GET</code> request in <code>twitter.py</code> which can be found at <code>recon-ng/modules/locations-pushpins/twitter.py</code>. </p>
+<p>The original code in the <code>module_run</code> function should look like:</p>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">module_run</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">points</span><span class="p">):</span>
+    <span class="n">rad</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">[</span><span class="s1">&#39;radius&#39;</span><span class="p">]</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;https://api.twitter.com/1.1/search/tweets.json&#39;</span>
+    <span class="k">for</span> <span class="n">point</span> <span class="ow">in</span> <span class="n">points</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">heading</span><span class="p">(</span><span class="n">point</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">output</span><span class="p">(</span><span class="s1">&#39;Collecting data for an unknown number of tweets...&#39;</span><span class="p">)</span>
+        <span class="n">results</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">search_twitter_api</span><span class="p">({</span><span class="s1">&#39;q&#39;</span><span class="p">:</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;geocode&#39;</span><span class="p">:</span> <span class="s1">&#39;</span><span class="si">%s</span><span class="s1">,</span><span class="si">%f</span><span class="s1">km&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">point</span><span class="p">,</span> <span class="n">rad</span><span class="p">)})</span>
+</pre></div>
+
+
+<p>Add <code>'count':'100'</code> after <code>geocode</code> so that the <code>results</code> variable looks like:</p>
+<div class="highlight"><pre><span></span><span class="n">results</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">search_twitter_api</span><span class="p">({</span><span class="s1">&#39;q&#39;</span><span class="p">:</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;geocode&#39;</span><span class="p">:</span> <span class="s1">&#39;</span><span class="si">%s</span><span class="s1">,</span><span class="si">%f</span><span class="s1">km&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">point</span><span class="p">,</span> <span class="n">rad</span><span class="p">),</span> <span class="s1">&#39;count&#39;</span><span class="p">:</span><span class="s1">&#39;100&#39;</span><span class="p">})</span>
+</pre></div>
+
+
+<p>This added parameter will return the maxium number (100) of tweets per page in your call to Twitter's Search API. </p>
+<h2>Beginning Collection</h2>
+<p>Before we're ready to automate the collection process, there's some minimal setup involved. </p>
+<p>Inside of the cloned <code>recon-ng</code> repositoy should be (<em>another</em>) <code>recon-ng</code> - but this is the executable included with the source. </p>
+<p>Start the framework by entering <code>./recon-ng</code> into your terminal.</p>
+<h4>API Keys</h4>
+<p>After acquiring <a href="https://apps.twitter.com/">Twitter API keys</a>, store them in recon-ng's <em>Keys</em> table by entering your access and secret keys with the <code>keys add twitter_api &lt;YOUR_KEY&gt;</code> and <code>keys add twitter_secret &lt;YOUR_KEY&gt;</code> commands. (To view any API keys you have stored in recon-ng, enter <code>keys list</code>.)</p>
+<h4>Workspaces</h4>
+<p>In recon-ng, workspaces are containers that allow you to collect and store reconnaissance for specific projects and/or targets. Results from any modules you may run within this workspace will <em>only</em> be stored in the current workspace's tables.</p>
+<p>For our purposes, we'll create a workspace called "twitter_recon" with the command <code>workspaces add twitter_recon</code> - yes, it's pretty intuitive.</p>
+<p><code>workspaces select twitter_recon</code> will place you into this workspace (and if you don't select one, you're placed in the <code>default</code> workspace). </p>
+<h4>Locations</h4>
+<p>Remember, database interaction is the central mechanism in the recon-ng framework. Just like the <em>Keys</em> table for your API credentials, the <em>Locations</em> table allows users to store addresses and coordinates.</p>
+<p>Enter <code>add locations</code>. Assuming that you don't know the latititude and longitude of your target locations, skip those options when prompted (press enter), but specify an address.</p>
+<p>The <code>geocode</code> module will provide the exact latitude and longitude of the target address. Enter <code>load recon/locations-locations/geocode</code> and then <code>run</code>. The <code>show locations</code> command will print the <em>Locations</em> table, which should now have a completed row (latititude, longitude, address).</p>
+<p><img alt="Locations Table" src="../images/locations.jpg" /></p>
+<h4>Twitter Search</h4>
+<p>The <code>twitter.py</code> module we modified will use Twitter's Search API to pull tweets that were created within close proximity to the target location. Load the module by entering <code>load recon/locations-pushpins/twitter</code> and then - you guessed it - <code>run</code>. </p>
+<p>Results are stored as <em>pushpins</em> for the map that we're going to produce at the end. </p>
+<p>The <code>show dashboard</code> command will present a brief overview of your activity and results, including how many times you've run each module in the current workspace, and how many pushpins (tweets, in our case) you've harvested.</p>
+<p><img alt="Dashboard" src="../images/dashboard.jpg" /></p>
+<h4>Reporting &amp; Visualizing</h4>
+<p>Remember, the point of this exercise is to visualize the geotagged social media posts we've collected and plot them within a specified radius of our target locations. </p>
+<p>Recon-ng's <em>reporting</em> module makes this effortless. Enter these commands:</p>
+<ul>
+<li><code>load reporting/pushpins</code></li>
+<li><code>show locations</code> (note: this just makes the next steps easier)</li>
+<li><code>set LATITUDE &lt;target_latitiude_goes_here&gt;</code></li>
+<li><code>set LONGITUDE &lt;target_longitude_goes_here&gt;</code></li>
+<li><code>set RADIUS 1</code> (note: if the target is in an urban or heavily populated area, set the radius to 0.5)</li>
+<li><code>run</code></li>
+</ul>
+<p>After following these steps, the <code>reporting/pushpins</code> module will generate two reports in your browser. The first will chronologically list all of your pushpins in a column (which we're not concerned with here), and the second will plot all of the geotagged posts as pushpins on a Google map.</p>
+<p><img alt="Map" src="../images/map3.jpg" /></p>
+<p>You can interact with any of these pushpins. Each pushpin has a link to the user's Twitter profile and a link to the specific tweet that you collected.</p>
+<h2>Automating the Process</h2>
+<p>With the help of a resource file and cron job, we won't have to repeat these steps every time we want to collect geotagged posts and store them in our workspace. </p>
+<ul>
+<li><strong>Resource file</strong>: a text file with the commands you want the recon-ng framework to run automatically.</li>
+<li><strong>Cron job</strong>: a program that allows <a href="http://www.unixgeeks.org/security/newbie/unix/cron-1.html">Unix users</a> to automatically execute commands and/or scripts at a specified point in time. </li>
+</ul>
+<h3>Creating a Resource File</h3>
+<p>For the sake of being explicit, create a new file called <code>commands.txt</code> in the same directory as your <code>recon-ng</code> executable and add the following lines to it:</p>
+<ul>
+<li><code>workspaces select &lt;your_workspace_name&gt;</code></li>
+<li><code>load recon/locations-pushpins/twitter</code></li>
+<li><code>run</code></li>
+<li><code>exit</code></li>
+</ul>
+<p>Because there's only a need to automate <em>collection</em>, the commands to generate the reports will be ommitted from the resource file (you won't need to look at the map every minute of the day).</p>
+<p>If you want to visualize how the resource file feeds your commands to recon-ng, enter the following command in your terminal: <code>./recon-ng -r commands.txt</code>.</p>
+<p>You should see the recon-ng framework start up and enter your specificed workspace, load and run the Twitter module, and exit. </p>
+<h4>Creating a Cron Job</h4>
+<p>Entering <code>sudo contab -e</code> in your terminal will allow you to create new cron jobs, as well as edit any existing cron jobs you may have<sup id="fnref:1"><a class="footnote-ref" href="#fn:1" rel="footnote">1</a></sup>. All cron jobs are added as a single line to the bottom of the file. </p>
+<p><img alt="Cron" src="../images/cron.jpg" /></p>
+<ul>
+<li><code>* * * * *</code>: runs every minute of every day</li>
+<li><code>cd ~/recon-ng</code>: enter the recon-ng directory</li>
+<li><code>./recon-ng -r commands.txt</code>: runs the recon-ng executable with our resource fle</li>
+</ul>
+<p>It's slightly overkill to pull from the Twitter API every minute of every day, but it doesn't really matter for our purposes - duplicate results aren't  stored in your workspace's tables. </p>
+<p>Whenever you want to check your results, fire up <code>./recon-ng</code> in your terminal, load the <em>reporting/pushpins</em> module, and run it (you don't need to set the latitude, longitude, and radius again). </p>
+<h4>Troubleshooting Tip</h4>
+<p>Because the cronjob doesn't run the recon-ng in your terminal, you're not going to <em>see</em> it run at whatever interval you specified it to. A simple way to ensure that your your cron job is working is to spin up recon-ng, enter your workspace, and run the <code>show dashboard</code> command again. If the <code>Runs</code> count for the <code>recon/locations-pushpins/twitter</code> is increasing, your cron job is working!</p>
+<div class="footnote">
+<hr />
+<ol>
+<li id="fn:1">
+<p>Cron jobs can sometimes be difficult. In my experience, most issues with cron jobs have turned out to be filepath and permission issues. You can find a more detailed introduction to cron jobs <a href="https://code.tutsplus.com/tutorials/scheduling-tasks-with-cron-jobs--net-8800">here</a>.&#160;<a class="footnote-backref" href="#fnref:1" rev="footnote" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
+  </div>
+  <div class="tag-cloud">
+    <p>
+      <a href="https://aaeissa.github.io/tag/osint.html">OSINT</a>
+      <a href="https://aaeissa.github.io/tag/python.html">Python</a>
+      <a href="https://aaeissa.github.io/tag/twitter.html">Twitter</a>
+    </p>
+  </div>
+
+
+
+
+</article>
+
+    <footer>
+<p>&copy; Ahmed Eissa 2017</p>
+<p>    Powered by <a href="http://getpelican.com" target="_blank">Pelican</a> - <a href="https://github.com/alexandrevicenzi/flex" target="_blank">Flex</a> theme by <a href="http://alexandrevicenzi.com" target="_blank">Alexandre Vicenzi</a>
+</p>    </footer>
+  </main>
+
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " Ahmed Eissa ",
+  "url" : "https://aaeissa.github.io",
+  "image": "/images/profile_pic.jpeg",
+  "description": "Exploring the intersection of technology and policy."
+}
+</script>
+</body>
+</html>
