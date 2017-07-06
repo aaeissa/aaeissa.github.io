@@ -102,38 +102,38 @@
 
   <div>
     <p>Easy method - python-docx module</p>
-<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">docx</span> <span class="kn">import</span> <span class="n">Document</span>
+<div class="highlight"><pre><span></span>from docx import Document
 
-<span class="n">document</span> <span class="o">=</span> <span class="n">Document</span><span class="p">(</span><span class="s1">&#39;test.docx&#39;</span><span class="p">)</span>
-<span class="n">document</span><span class="o">.</span><span class="n">core_properties</span><span class="o">.</span><span class="n">author</span>
+<span class="nv">document</span> <span class="o">=</span> Document<span class="o">(</span><span class="s1">&#39;test.docx&#39;</span><span class="o">)</span>
+document.core_properties.author
 <span class="s1">&#39;real@email.com&#39;</span>
 
-<span class="n">document</span><span class="o">.</span><span class="n">core_properties</span><span class="o">.</span><span class="n">created</span>
-<span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2017</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">19</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span>
- <span class="n">document</span><span class="o">.</span><span class="n">core_properties</span><span class="o">.</span><span class="n">last_modified_by</span>
+document.core_properties.created
+datetime.datetime<span class="o">(</span><span class="m">2017</span>, <span class="m">5</span>, <span class="m">11</span>, <span class="m">19</span>, <span class="m">7</span><span class="o">)</span>
+ document.core_properties.last_modified_by
 <span class="s1">&#39;goodguy@original.com&#39;</span>
 
-<span class="n">document</span><span class="o">.</span><span class="n">core_properties</span><span class="o">.</span><span class="n">author</span> <span class="o">=</span> <span class="n">badguy</span><span class="nd">@changed.com</span>
-<span class="n">document</span><span class="o">.</span><span class="n">core_properties</span><span class="o">.</span><span class="n">author</span>
+document.core_properties.author <span class="o">=</span> badguy@changed.com
+document.core_properties.author
 <span class="s1">&#39;badguy@changed.com&#39;</span>
 
-<span class="n">document</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">&#39;meta.docx&#39;</span><span class="p">)</span>
+document.save<span class="o">(</span><span class="s1">&#39;meta.docx&#39;</span><span class="o">)</span>
 </pre></div>
 
 
 <p>Formatted XML</p>
-<div class="highlight"><pre><span></span><span class="c">&lt;!-- &lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
-<span class="c">&lt;cp:coreProperties xmlns:cp=&quot;http://schemas.openxmlformats.org/package/2006/metadata/core-properties&quot; xmlns:dc=&quot;http://purl.org/dc/elements/1.1/&quot; xmlns:dcmitype=&quot;http://purl.org/dc/dcmitype/&quot; xmlns:dcterms=&quot;http://purl.org/dc/terms/&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;&gt;</span>
-<span class="c">   &lt;dc:title /&gt;</span>
-<span class="c">   &lt;dc:subject /&gt;</span>
-<span class="c">   &lt;dc:creator&gt;badguy@changed.com&lt;/dc:creator&gt;</span>
-<span class="c">   &lt;cp:keywords /&gt;</span>
-<span class="c">   &lt;dc:description /&gt;</span>
-<span class="c">   &lt;cp:lastModifiedBy&gt;ahmed@terbiumlabs.com&lt;/cp:lastModifiedBy&gt;</span>
-<span class="c">   &lt;cp:revision&gt;1&lt;/cp:revision&gt;</span>
-<span class="c">   &lt;dcterms:created xsi:type=&quot;dcterms:W3CDTF&quot;&gt;2017-05-11T19:07:00Z&lt;/dcterms:created&gt;</span>
-<span class="c">   &lt;dcterms:modified xsi:type=&quot;dcterms:W3CDTF&quot;&gt;2017-05-11T19:07:00Z&lt;/dcterms:modified&gt;</span>
-<span class="c">&lt;/cp:coreProperties&gt; --&gt;</span>
+<div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+<span class="nt">&lt;cp:coreProperties</span> <span class="na">xmlns:cp=</span><span class="s">&quot;http://schemas.openxmlformats.org/package/2006/metadata/core-properties&quot;</span> <span class="na">xmlns:dc=</span><span class="s">&quot;http://purl.org/dc/elements/1.1/&quot;</span> <span class="na">xmlns:dcmitype=</span><span class="s">&quot;http://purl.org/dc/dcmitype/&quot;</span> <span class="na">xmlns:dcterms=</span><span class="s">&quot;http://purl.org/dc/terms/&quot;</span> <span class="na">xmlns:xsi=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span><span class="nt">&gt;</span>
+   <span class="nt">&lt;dc:title</span> <span class="nt">/&gt;</span>
+   <span class="nt">&lt;dc:subject</span> <span class="nt">/&gt;</span>
+   <span class="nt">&lt;dc:creator&gt;</span>badguy@changed.com<span class="nt">&lt;/dc:creator&gt;</span>
+   <span class="nt">&lt;cp:keywords</span> <span class="nt">/&gt;</span>
+   <span class="nt">&lt;dc:description</span> <span class="nt">/&gt;</span>
+   <span class="nt">&lt;cp:lastModifiedBy&gt;</span>ahmed@terbiumlabs.com<span class="nt">&lt;/cp:lastModifiedBy&gt;</span>
+   <span class="nt">&lt;cp:revision&gt;</span>1<span class="nt">&lt;/cp:revision&gt;</span>
+   <span class="nt">&lt;dcterms:created</span> <span class="na">xsi:type=</span><span class="s">&quot;dcterms:W3CDTF&quot;</span><span class="nt">&gt;</span>2017-05-11T19:07:00Z<span class="nt">&lt;/dcterms:created&gt;</span>
+   <span class="nt">&lt;dcterms:modified</span> <span class="na">xsi:type=</span><span class="s">&quot;dcterms:W3CDTF&quot;</span><span class="nt">&gt;</span>2017-05-11T19:07:00Z<span class="nt">&lt;/dcterms:modified&gt;</span>
+<span class="nt">&lt;/cp:coreProperties&gt;</span>
 </pre></div>
   </div>
   <div class="tag-cloud">
