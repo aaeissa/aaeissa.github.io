@@ -1,37 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom"><title>Ahmed Eissa</title><link href="https://aaeissa.github.io/" rel="alternate"></link><link href="https://aaeissa.github.io/feeds/python.atom.xml" rel="self"></link><id>https://aaeissa.github.io/</id><updated>2017-07-06T12:00:00-04:00</updated><entry><title>Changing Metadata with Python</title><link href="https://aaeissa.github.io/meta.html" rel="alternate"></link><published>2017-07-06T12:00:00-04:00</published><updated>2017-07-06T12:00:00-04:00</updated><author><name>Ahmed Eissa</name></author><id>tag:aaeissa.github.io,2017-07-06:meta.html</id><summary type="html">&lt;p&gt;Easy method - python-docx module&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;from docx import Document
-
-&lt;span class="nv"&gt;document&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; Document&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;test.docx&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;
-document.core_properties.author
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&amp;gt;&amp;gt;&amp;gt; from docx import Document
+&amp;gt;&amp;gt;&amp;gt; &lt;span class="nv"&gt;document&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; Document&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;test.docx&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;
+&amp;gt;&amp;gt;&amp;gt; document.core_properties.author
 &lt;span class="s1"&gt;&amp;#39;real@email.com&amp;#39;&lt;/span&gt;
-
-document.core_properties.created
+&amp;gt;&amp;gt;&amp;gt; document.core_properties.created
 datetime.datetime&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="m"&gt;2017&lt;/span&gt;, &lt;span class="m"&gt;5&lt;/span&gt;, &lt;span class="m"&gt;11&lt;/span&gt;, &lt;span class="m"&gt;19&lt;/span&gt;, &lt;span class="m"&gt;7&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;
- document.core_properties.last_modified_by
+&amp;gt;&amp;gt;&amp;gt; document.core_properties.last_modified_by
 &lt;span class="s1"&gt;&amp;#39;goodguy@original.com&amp;#39;&lt;/span&gt;
-
-document.core_properties.author &lt;span class="o"&gt;=&lt;/span&gt; badguy@changed.com
-document.core_properties.author
+&amp;gt;&amp;gt;&amp;gt; document.core_properties.author &lt;span class="o"&gt;=&lt;/span&gt; badguy@changed.com
+&amp;gt;&amp;gt;&amp;gt; document.core_properties.author
 &lt;span class="s1"&gt;&amp;#39;badguy@changed.com&amp;#39;&lt;/span&gt;
-
-document.save&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;meta.docx&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
+&amp;gt;&amp;gt;&amp;gt; document.save&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;meta.docx&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;
 
 
-&lt;p&gt;Formatted XML&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="cp"&gt;&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;UTF-8&amp;quot;?&amp;gt;&lt;/span&gt;
-&lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;cp:coreProperties&lt;/span&gt; &lt;span class="na"&gt;xmlns:cp&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;http://schemas.openxmlformats.org/package/2006/metadata/core-properties&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;xmlns:dc&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;http://purl.org/dc/elements/1.1/&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;xmlns:dcmitype&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;http://purl.org/dc/dcmitype/&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;xmlns:dcterms&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;http://purl.org/dc/terms/&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;xmlns:xsi&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;http://www.w3.org/2001/XMLSchema-instance&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
-   &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;dc:title&lt;/span&gt; &lt;span class="p"&gt;/&amp;gt;&lt;/span&gt;
-   &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;dc:subject&lt;/span&gt; &lt;span class="p"&gt;/&amp;gt;&lt;/span&gt;
-   &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;dc:creator&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;badguy@changed.com&lt;span class="p"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;dc:creator&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
-   &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;cp:keywords&lt;/span&gt; &lt;span class="p"&gt;/&amp;gt;&lt;/span&gt;
-   &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;dc:description&lt;/span&gt; &lt;span class="p"&gt;/&amp;gt;&lt;/span&gt;
-   &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;cp:lastModifiedBy&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;badguy@changed.com&lt;span class="p"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;cp:lastModifiedBy&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
-   &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;cp:revision&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;1&lt;span class="p"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;cp:revision&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
-   &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;dcterms:created&lt;/span&gt; &lt;span class="na"&gt;xsi:type&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;dcterms:W3CDTF&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;2017-05-11T19:07:00Z&lt;span class="p"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;dcterms:created&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
-   &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;dcterms:modified&lt;/span&gt; &lt;span class="na"&gt;xsi:type&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;dcterms:W3CDTF&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;2017-05-11T19:07:00Z&lt;span class="p"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;dcterms:modified&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
-&lt;span class="p"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;cp:coreProperties&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+
+Formatted XML
+&lt;span class="sb"&gt;```&lt;/span&gt;html  
+&amp;lt;?xml &lt;span class="nv"&gt;version&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;1.0&amp;quot;&lt;/span&gt; &lt;span class="nv"&gt;encoding&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;UTF-8&amp;quot;&lt;/span&gt;?&amp;gt;
+&amp;lt;cp:coreProperties xmlns:cp&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;http://schemas.openxmlformats.org/package/2006/metadata/core-properties&amp;quot;&lt;/span&gt; xmlns:dc&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;http://purl.org/dc/elements/1.1/&amp;quot;&lt;/span&gt; xmlns:dcmitype&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;http://purl.org/dc/dcmitype/&amp;quot;&lt;/span&gt; xmlns:dcterms&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;http://purl.org/dc/terms/&amp;quot;&lt;/span&gt; xmlns:xsi&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;http://www.w3.org/2001/XMLSchema-instance&amp;quot;&lt;/span&gt;&amp;gt;
+   &amp;lt;dc:title /&amp;gt;
+   &amp;lt;dc:subject /&amp;gt;
+   &amp;lt;dc:creator&amp;gt;badguy@changed.com&amp;lt;/dc:creator&amp;gt;
+   &amp;lt;cp:keywords /&amp;gt;
+   &amp;lt;dc:description /&amp;gt;
+   &amp;lt;cp:lastModifiedBy&amp;gt;badguy@changed.com&amp;lt;/cp:lastModifiedBy&amp;gt;
+   &amp;lt;cp:revision&amp;gt;1&amp;lt;/cp:revision&amp;gt;
+   &amp;lt;dcterms:created xsi:type&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;dcterms:W3CDTF&amp;quot;&lt;/span&gt;&amp;gt;2017-05-11T19:07:00Z&amp;lt;/dcterms:created&amp;gt;
+   &amp;lt;dcterms:modified xsi:type&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;dcterms:W3CDTF&amp;quot;&lt;/span&gt;&amp;gt;2017-05-11T19:07:00Z&amp;lt;/dcterms:modified&amp;gt;
+&amp;lt;/cp:coreProperties&amp;gt;
 &lt;/pre&gt;&lt;/div&gt;</summary><category term="Metadata"></category><category term="Python"></category></entry><entry><title>Automating Social Media Reconnaissance</title><link href="https://aaeissa.github.io/recon-ng.html" rel="alternate"></link><published>2017-06-05T12:00:00-04:00</published><updated>2017-06-05T12:00:00-04:00</updated><author><name>Ahmed Eissa</name></author><id>tag:aaeissa.github.io,2017-06-05:recon-ng.html</id><summary type="html">&lt;h2&gt;Risk in the Age of Social Media&lt;/h2&gt;
 &lt;p&gt;Consider this: maybe your LinkedIn profile is a little &lt;em&gt;too&lt;/em&gt; detailed, and maybe you should stop attaching your location to your tweets, especially while at work. &lt;/p&gt;
 &lt;p&gt;Social media is a rich source of open source intellgience (OSINT), and measuring social media exposure is becoming progressively more common in penetration testing and operational security.&lt;/p&gt;
