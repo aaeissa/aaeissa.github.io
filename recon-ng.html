@@ -104,10 +104,10 @@
   <div>
     <h2>Risk in the Age of Social Media</h2>
 <p>Consider this: maybe your LinkedIn profile is a little <em>too</em> detailed, and maybe you should stop attaching your location to your tweets, especially while at work. </p>
-<p>Social media is a rich source of open source intellgience (OSINT), and measuring social media exposure is becoming progressively more common in penetration testing and operational security.</p>
+<p>Social media is a rich source of open source intellgience (OSINT), and measuring social media exposure is becoming increasingly common in penetration testing and operational security.</p>
 <p>Because there are dozens of free collection tools that allow anyone to systematically harvest and analyze these public posts, the ubiquity of social media brings with it organizational risks that businesses are still learning how to mitigate.</p>
 <p><em>Recon-ng</em>, one of the more comprehensive tools, is a web reconnaissance framework that comes pre-installed with Kali Linux and can be used to automate the collection and visualization of social media posts that contain geographic metadata.</p>
-<p>Visualizing collected posts for a specificed geographic location can lead to some great insights, which recon-ng provides via its <em>pushpins</em> feature, which grabs location metadata (latitude, longitude) from geo-tagged posts in a defined radius and plots them with Google Maps.</p>
+<p>Visualizing collected posts for a specificed geographic location can lead to some great insights, which recon-ng provides via its <em>pushpins</em> feature by grabbing location metadata (latitude, longitude) from geo-tagged posts in a defined radius, and plotting them with Google Maps.</p>
 <p><img alt="Map" src="./images/map2.JPG" /></p>
 <p>Tim Tomes, the author of recon-ng, has a great video (<a href="https://www.youtube.com/watch?v=BwopO7dxT98">Recon-ng Pushpin Intro</a>) which can quickly bring you up to speed on the feature before we make a small change to the source, and ultimately automate the framework's collection capabilities.</p>
 <p>Recon-ng comes with modules for pulling posts from Flickr, Instagram, Picasa, Shodan, Twitter, and Youtube. For the sake of simplicity (not to mention, <a href="https://dev.twitter.com/overview/api/tweets">a single tweet</a> has <em>a lot</em> of data), we'll just use Twitter. </p>
@@ -151,7 +151,7 @@
 <h4>API Keys</h4>
 <p>After acquiring <a href="https://apps.twitter.com/">Twitter API keys</a>, store them in recon-ng's <em>Keys</em> table by entering your access and secret keys with the <code>keys add twitter_api &lt;YOUR_KEY&gt;</code> and <code>keys add twitter_secret &lt;YOUR_KEY&gt;</code> commands. (To view any API keys you have stored in recon-ng, enter <code>keys list</code>.)</p>
 <h4>Workspaces</h4>
-<p>In recon-ng, workspaces are containers that allow you to collect and store reconnaissance for specific projects and/or targets. Results from any modules you may run within this workspace will <em>only</em> be stored in the current workspace's tables.</p>
+<p>In recon-ng, workspaces are containers that allow you to collect and store reconnaissance for specific projects/targets. Results from any modules you may run within this workspace will <em>only</em> be stored in the current workspace's tables.</p>
 <p>For our purposes, we'll create a workspace called "twitter_recon" with the command <code>workspaces add twitter_recon</code> - yes, it's pretty intuitive.</p>
 <p><code>workspaces select twitter_recon</code> will place you into this workspace (and if you don't select one, you're placed in the <code>default</code> workspace). </p>
 <h4>Locations</h4>
@@ -199,14 +199,14 @@
 <p>Entering <code>sudo contab -e</code> in your terminal will allow you to create new cron jobs, as well as edit any existing cron jobs you may have<sup id="fnref:1"><a class="footnote-ref" href="#fn:1" rel="footnote">1</a></sup>. All cron jobs are added as a single line to the bottom of the file. </p>
 <p><img alt="Cron" src="./images/cron.JPG" /></p>
 <ul>
-<li><code>* * * * *</code>: runs every minute of every day</li>
+<li><code>* * * * *</code>: run every minute of every day</li>
 <li><code>cd ~/recon-ng</code>: enter the recon-ng directory</li>
-<li><code>./recon-ng -r commands.txt</code>: runs the recon-ng executable with our resource fle</li>
+<li><code>./recon-ng -r commands.txt</code>: run the recon-ng executable with our resource fle</li>
 </ul>
 <p>It's slightly overkill to pull from the Twitter API every minute of every day, but it doesn't really matter for our purposes - duplicate results aren't  stored in your workspace's tables. </p>
 <p>Whenever you want to check your results, fire up <code>./recon-ng</code> in your terminal, load the <em>reporting/pushpins</em> module, and run it (you don't need to set the latitude, longitude, and radius again). </p>
 <h4>Troubleshooting Tip</h4>
-<p>Because the cronjob doesn't run the recon-ng in your terminal, you're not going to <em>see</em> it run at whatever interval you specified it to. A simple way to ensure that your your cron job is working is to spin up recon-ng, enter your workspace, and run the <code>show dashboard</code> command again. If the <code>Runs</code> count for the <code>recon/locations-pushpins/twitter</code> is increasing, your cron job is working!</p>
+<p>Because the cronjob doesn't run the recon-ng in your terminal, you're not going to <em>see</em> it run at whatever interval you specified it to. A simple way to ensure that your cron job is working is to spin up recon-ng, enter your workspace, and run the <code>show dashboard</code> command again. If the <code>Runs</code> count for the <code>recon/locations-pushpins/twitter</code> is increasing, your cron job is working!</p>
 <div class="footnote">
 <hr />
 <ol>
