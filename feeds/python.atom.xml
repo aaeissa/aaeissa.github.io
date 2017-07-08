@@ -33,7 +33,7 @@
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;As is mentioned in the article "&lt;a href="https://blog.0day.rocks/lets-get-fancy-with-false-flags-28eaabefeff6"&gt;Let's get fancy with flase flags&lt;/a&gt;" by the Twitter-famous security researcher , it's trivially easy to alter this metadata.&lt;/p&gt;
+&lt;p&gt;As is mentioned in the article "&lt;a href="https://blog.0day.rocks/lets-get-fancy-with-false-flags-28eaabefeff6"&gt;Let's get fancy with flase flags&lt;/a&gt;", it's trivially easy to alter this metadata.&lt;/p&gt;
 &lt;h3&gt;Python&lt;/h3&gt;
 &lt;p&gt;Equipped with the &lt;code&gt;python-docx&lt;/code&gt; module (documentation &lt;a href="https://python-docx.readthedocs.io/en/latest/"&gt;here&lt;/a&gt;), we can quickly change any of the fields in the &lt;code&gt;core.xml&lt;/code&gt; file with just a few lines of code.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;docx&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Document&lt;/span&gt;
@@ -56,8 +56,7 @@
 &lt;blockquote&gt;
 &lt;p&gt;"Metadata might only give us clues. It needs to be corroborated with other sources of intelligence or you’ll fail miserably at threat intel."&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;Although the example of MS Word documents may seem oversly simplistic, it still highlights the basic principle.&lt;/p&gt;
-&lt;p&gt;Allow me to reference yet another security researcher known only by their handle, &lt;a href="https://medium.com/@thegrugq/idle-thoughts-on-cyber-82170b2b7280"&gt;the grugq&lt;/a&gt;, detailing the complexity of "proof" in intelligence investigations:&lt;/p&gt;
+&lt;p&gt;Although the example of MS Word documents may seem oversly simplistic, it still highlights the basic principle. Allow me to reference yet another security researcher known only by their handle, &lt;a href="https://medium.com/@thegrugq/idle-thoughts-on-cyber-82170b2b7280"&gt;the grugq&lt;/a&gt;, detailing the complexity of "proof" in intelligence investigations:&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;"It will probably be a bunch of circumstantial evidence, a complexity of timelines, snippets of information from various sources with different levels of confidentiality and reliability. This patchwork of data needs to be processed and analyzed via complicated techniques designed to reduce cognitive bias. All of this, only to arrive at a sort of high probability of &lt;em&gt;maybe&lt;/em&gt;."&lt;/p&gt;
 &lt;/blockquote&gt;</summary><category term="Metadata"></category><category term="Python"></category></entry><entry><title>Automating Social Media Reconnaissance</title><link href="https://aaeissa.github.io/recon-ng.html" rel="alternate"></link><published>2017-06-05T12:00:00-04:00</published><updated>2017-06-05T12:00:00-04:00</updated><author><name>Ahmed Eissa</name></author><id>tag:aaeissa.github.io,2017-06-05:recon-ng.html</id><summary type="html">&lt;h2&gt;Risk in the Age of Social Media&lt;/h2&gt;
