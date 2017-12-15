@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Ahmed Eissa</title><link href="https://aaeissa.github.io/" rel="alternate"></link><link href="https://aaeissa.github.io/feeds/all.atom.xml" rel="self"></link><id>https://aaeissa.github.io/</id><updated>2017-07-08T12:00:00-04:00</updated><entry><title>Changing Metadata with Python</title><link href="https://aaeissa.github.io/meta.html" rel="alternate"></link><published>2017-07-08T12:00:00-04:00</published><updated>2017-07-08T12:00:00-04:00</updated><author><name>Ahmed Eissa</name></author><id>tag:aaeissa.github.io,2017-07-08:meta.html</id><summary type="html">&lt;h3&gt;Election Emails&lt;/h3&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Ahmed Eissa</title><link href="https://aaeissa.github.io/" rel="alternate"></link><link href="https://aaeissa.github.io/feeds/all.atom.xml" rel="self"></link><id>https://aaeissa.github.io/</id><updated>2017-12-08T00:00:00-05:00</updated><entry><title>sahibcantsingh_analysis</title><link href="https://aaeissa.github.io/sahibcantsingh_analysis.html" rel="alternate"></link><published>2017-12-08T00:00:00-05:00</published><updated>2017-12-08T00:00:00-05:00</updated><author><name>Ahmed</name></author><id>tag:aaeissa.github.io,2017-12-08:/sahibcantsingh_analysis.html</id><summary type="html">&lt;p&gt;Test&lt;/p&gt;</summary><content type="html">&lt;h1&gt;Test&lt;/h1&gt;
+&lt;blockquote class="twitter-tweet" data-lang="en"&gt;&lt;p lang="en" dir="ltr"&gt;Can someone confiscate my brother&amp;#39;s Instagram &lt;a href="https://t.co/Ehxh8oQLPz"&gt;pic.twitter.com/Ehxh8oQLPz&lt;/a&gt;&lt;/p&gt;&amp;mdash; sunmeet kaur (@meetdasun) &lt;a href="https://twitter.com/meetdasun/status/934528074196176896?ref_src=twsrc%5Etfw"&gt;November 25, 2017&lt;/a&gt;&lt;/blockquote&gt;
+
+&lt;script async src="https://platform.twitter.com/widgets.js" charset="utf-8"&gt;&lt;/script&gt;
+
+&lt;div&gt;
+    &lt;a href="https://plot.ly/~ahmedeissa/58/?share_key=Tvi92redHu2vYSx8heWunH" target="_blank" title="Account Age of @Sahibcantsingh&amp;#39;s Followers" style="display: block; text-align: center;"&gt;&lt;img src="https://plot.ly/~ahmedeissa/58.png?share_key=Tvi92redHu2vYSx8heWunH" alt="Account Age of @Sahibcantsingh&amp;#39;s Followers" style="max-width: 100%;width: 600px;"  width="600" onerror="this.onerror=null;this.src='https://plot.ly/404.png';" /&gt;&lt;/a&gt;
+    &lt;script data-plotly="ahmedeissa:58" sharekey-plotly="Tvi92redHu2vYSx8heWunH" src="https://plot.ly/embed.js" async&gt;&lt;/script&gt;
+&lt;/div&gt;</content><category term="Twitter"></category></entry><entry><title>Changing Metadata with Python</title><link href="https://aaeissa.github.io/meta.html" rel="alternate"></link><published>2017-07-08T12:00:00-04:00</published><updated>2017-07-08T12:00:00-04:00</updated><author><name>Ahmed Eissa</name></author><id>tag:aaeissa.github.io,2017-07-08:/meta.html</id><summary type="html">&lt;p&gt;Using Python to alter Microsoft Word metadata.&lt;/p&gt;</summary><content type="html">&lt;h3&gt;Election Emails&lt;/h3&gt;
 &lt;p&gt;In early May, near the tail end of the contentious French presidential election, then-candidate and now-President Emmanuel Macron's campaign was targeted by who many security experts thought to be APT28 - an advanced, offensive Russian hacking group. &lt;/p&gt;
 &lt;p&gt;Less than 48 hours before the election, download links to 9GB of emails from Macron's party were anonymously published on Pastebin. Shortly thereafter, the &lt;em&gt;En Marche!&lt;/em&gt; political party confirmed the breach in a &lt;a href="https://www.wired.com/2017/05/macron-email-hack-french-election/"&gt;public statement&lt;/a&gt;:&lt;/p&gt;
 &lt;blockquote&gt;
@@ -11,11 +19,11 @@
 &lt;p&gt;MS Word documents, also known as &lt;em&gt;&lt;a href="https://en.wikipedia.org/wiki/Office_Open_XML"&gt;Office Open XML Documents&lt;/a&gt;,&lt;/em&gt; are essentially zipped archives (they contain other files and folders).&lt;/p&gt;
 &lt;p&gt;If you want to quickly test this, create a "test.docx" file and rename it to "test.zip." Extract the files from the archive, and you should be left with the following directory structure.&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;-- test.zip&lt;br /&gt;
-| -- rels/&lt;br /&gt;
-| -- docProps/&lt;br /&gt;
-| -- -- app.xml&lt;br /&gt;
-| -- -- core.xml&lt;br /&gt;
+&lt;p&gt;-- test.zip&lt;br&gt;
+| -- rels/&lt;br&gt;
+| -- docProps/&lt;br&gt;
+| -- -- app.xml&lt;br&gt;
+| -- -- core.xml&lt;br&gt;
 | -- word/  &lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;The &lt;code&gt;core.xml&lt;/code&gt; file contains all of the metadata for your file:&lt;/p&gt;
@@ -59,13 +67,13 @@
 &lt;p&gt;Although the example of MS Word documents may seem overly simplistic, it still highlights the basic principle. Allow me to reference yet another security researcher known only by their handle, &lt;a href="https://medium.com/@thegrugq/idle-thoughts-on-cyber-82170b2b7280"&gt;the grugq&lt;/a&gt;, detailing the complexity of "proof" in intelligence investigations:&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;"It will probably be a bunch of circumstantial evidence, a complexity of timelines, snippets of information from various sources with different levels of confidentiality and reliability. This patchwork of data needs to be processed and analyzed via complicated techniques designed to reduce cognitive bias. All of this, only to arrive at a sort of high probability of &lt;em&gt;maybe&lt;/em&gt;."&lt;/p&gt;
-&lt;/blockquote&gt;</summary><category term="Metadata"></category><category term="Python"></category></entry><entry><title>Automating Social Media Reconnaissance</title><link href="https://aaeissa.github.io/recon-ng.html" rel="alternate"></link><published>2017-06-05T12:00:00-04:00</published><updated>2017-06-05T12:00:00-04:00</updated><author><name>Ahmed Eissa</name></author><id>tag:aaeissa.github.io,2017-06-05:recon-ng.html</id><summary type="html">&lt;h2&gt;Risk in the Age of Social Media&lt;/h2&gt;
+&lt;/blockquote&gt;</content><category term="Metadata"></category><category term="Python"></category></entry><entry><title>Automating Social Media Reconnaissance</title><link href="https://aaeissa.github.io/recon-ng.html" rel="alternate"></link><published>2017-06-05T12:00:00-04:00</published><updated>2017-06-05T12:00:00-04:00</updated><author><name>Ahmed Eissa</name></author><id>tag:aaeissa.github.io,2017-06-05:/recon-ng.html</id><summary type="html">&lt;p&gt;Automating the recon-ng framework for collecting and visualizing geotagged Twitter posts.&lt;/p&gt;</summary><content type="html">&lt;h2&gt;Risk in the Age of Social Media&lt;/h2&gt;
 &lt;p&gt;Consider this: maybe your LinkedIn profile is a little &lt;em&gt;too&lt;/em&gt; detailed, and maybe you should stop attaching your location to your tweets, especially while at work. &lt;/p&gt;
 &lt;p&gt;Social media is a rich source of open source intellgience (OSINT), and measuring social media exposure is becoming increasingly common in penetration testing and operational security.&lt;/p&gt;
 &lt;p&gt;Because there are dozens of free collection tools that allow anyone to systematically harvest and analyze these public posts, the ubiquity of social media brings with it organizational risks that businesses are still learning how to mitigate.&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;Recon-ng&lt;/em&gt;, one of the more comprehensive tools, is a web reconnaissance framework that comes pre-installed with Kali Linux and can be used to automate the collection and visualization of social media posts that contain geographic metadata.&lt;/p&gt;
 &lt;p&gt;Visualizing collected posts for a specificed geographic location can lead to some great insights, which recon-ng provides via its &lt;em&gt;pushpins&lt;/em&gt; feature by grabbing location metadata (latitude, longitude) from geo-tagged posts in a defined radius, and plotting them with Google Maps.&lt;/p&gt;
-&lt;p&gt;&lt;img alt="Map" src="./images/map2.JPG" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Map" src="./images/map2.JPG"&gt;&lt;/p&gt;
 &lt;p&gt;Tim Tomes, the author of recon-ng, has a great video (&lt;a href="https://www.youtube.com/watch?v=BwopO7dxT98"&gt;Recon-ng Pushpin Intro&lt;/a&gt;) which can quickly bring you up to speed on the feature before we make a small change to the source, and ultimately automate the framework's collection capabilities.&lt;/p&gt;
 &lt;p&gt;Recon-ng comes with modules for pulling posts from Flickr, Instagram, Picasa, Shodan, Twitter, and Youtube. For the sake of simplicity (not to mention, &lt;a href="https://dev.twitter.com/overview/api/tweets"&gt;a single tweet&lt;/a&gt; has &lt;em&gt;a lot&lt;/em&gt; of data), we'll just use Twitter. &lt;/p&gt;
 &lt;h2&gt;Clone the Source&lt;/h2&gt;
@@ -73,13 +81,13 @@
 &lt;p&gt;Open up a terminal in your Kali Linux VM and enter &lt;code&gt;git clone https://bitbucket.org/LaNMaSteR53/recon-ng.git&lt;/code&gt; to clone the source onto your machine.&lt;/p&gt;
 &lt;p&gt;The file structure should (roughly) look like this:&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;-- recon-ng&lt;br /&gt;
-| -- data/&lt;br /&gt;
-| -- modules/&lt;br /&gt;
-| -- recon/&lt;br /&gt;
-| -- recon-cli&lt;br /&gt;
-| -- recon-ng&lt;br /&gt;
-| -- recon-rpc&lt;br /&gt;
+&lt;p&gt;-- recon-ng&lt;br&gt;
+| -- data/&lt;br&gt;
+| -- modules/&lt;br&gt;
+| -- recon/&lt;br&gt;
+| -- recon-cli&lt;br&gt;
+| -- recon-ng&lt;br&gt;
+| -- recon-rpc&lt;br&gt;
 | -- recon-web  &lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h2&gt;Modify the Twitter Module&lt;/h2&gt;
@@ -115,12 +123,12 @@
 &lt;p&gt;Remember, database interaction is the central mechanism in the recon-ng framework. Just like the &lt;em&gt;Keys&lt;/em&gt; table for your API credentials, the &lt;em&gt;Locations&lt;/em&gt; table allows users to store addresses and coordinates.&lt;/p&gt;
 &lt;p&gt;Enter &lt;code&gt;add locations&lt;/code&gt;. Assuming that you don't know the latititude and longitude of your target locations, skip those options when prompted (press enter), but specify an address.&lt;/p&gt;
 &lt;p&gt;The &lt;code&gt;geocode&lt;/code&gt; module will provide the exact latitude and longitude of the target address. Enter &lt;code&gt;load recon/locations-locations/geocode&lt;/code&gt; and then &lt;code&gt;run&lt;/code&gt;. The &lt;code&gt;show locations&lt;/code&gt; command will print the &lt;em&gt;Locations&lt;/em&gt; table, which should now have a completed row (latititude, longitude, address).&lt;/p&gt;
-&lt;p&gt;&lt;img alt="Locations Table" src="./images/locations.JPG" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Locations Table" src="./images/locations.JPG"&gt;&lt;/p&gt;
 &lt;h4&gt;Twitter Search&lt;/h4&gt;
 &lt;p&gt;The &lt;code&gt;twitter.py&lt;/code&gt; module we modified will use Twitter's Search API to pull tweets that were created within close proximity to the target location. Load the module by entering &lt;code&gt;load recon/locations-pushpins/twitter&lt;/code&gt; and then - you guessed it - &lt;code&gt;run&lt;/code&gt;. &lt;/p&gt;
 &lt;p&gt;Results are stored as &lt;em&gt;pushpins&lt;/em&gt; for the map that we're going to produce at the end. &lt;/p&gt;
 &lt;p&gt;The &lt;code&gt;show dashboard&lt;/code&gt; command will present a brief overview of your activity and results, including how many times you've run each module in the current workspace, and how many pushpins (tweets, in our case) you've harvested.&lt;/p&gt;
-&lt;p&gt;&lt;img alt="Dashboard" src="./images/dashboard.JPG" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Dashboard" src="./images/dashboard.JPG"&gt;&lt;/p&gt;
 &lt;h4&gt;Reporting &amp;amp; Visualizing&lt;/h4&gt;
 &lt;p&gt;Remember, the point of this exercise is to visualize the geotagged social media posts we've collected and plot them within a specified radius of our target locations. &lt;/p&gt;
 &lt;p&gt;Recon-ng's &lt;em&gt;reporting&lt;/em&gt; module makes this effortless. Enter these commands:&lt;/p&gt;
@@ -133,7 +141,7 @@
 &lt;li&gt;&lt;code&gt;run&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;After following these steps, the &lt;code&gt;reporting/pushpins&lt;/code&gt; module will generate two reports in your browser. The first will chronologically list all of your pushpins in a column (which we're not concerned with here), and the second will plot all of the geotagged posts as pushpins on a Google map.&lt;/p&gt;
-&lt;p&gt;&lt;img alt="Map" src="./images/map3.JPG" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Map" src="./images/map3.JPG"&gt;&lt;/p&gt;
 &lt;p&gt;You can interact with any of these pushpins. Each pushpin has a link to the user's Twitter profile and a link to the specific tweet that you collected.&lt;/p&gt;
 &lt;h2&gt;Automating the Process&lt;/h2&gt;
 &lt;p&gt;With the help of a resource file and cron job, we won't have to repeat these steps every time we want to collect geotagged posts and store them in our workspace. &lt;/p&gt;
@@ -153,8 +161,8 @@
 &lt;p&gt;If you want to visualize how the resource file feeds your commands to recon-ng, enter the following command in your terminal: &lt;code&gt;./recon-ng -r commands.txt&lt;/code&gt;.&lt;/p&gt;
 &lt;p&gt;You should see the recon-ng framework start up and enter your specificed workspace, load and run the Twitter module, and exit. &lt;/p&gt;
 &lt;h4&gt;Creating a Cron Job&lt;/h4&gt;
-&lt;p&gt;Entering &lt;code&gt;sudo contab -e&lt;/code&gt; in your terminal will allow you to create new cron jobs, as well as edit any existing cron jobs you may have&lt;sup id="fnref:1"&gt;&lt;a class="footnote-ref" href="#fn:1" rel="footnote"&gt;1&lt;/a&gt;&lt;/sup&gt;. All cron jobs are added as a single line to the bottom of the file. &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Cron" src="./images/cron.JPG" /&gt;&lt;/p&gt;
+&lt;p&gt;Entering &lt;code&gt;sudo contab -e&lt;/code&gt; in your terminal will allow you to create new cron jobs, as well as edit any existing cron jobs you may have&lt;sup id="fnref-1"&gt;&lt;a class="footnote-ref" href="#fn-1"&gt;1&lt;/a&gt;&lt;/sup&gt;. All cron jobs are added as a single line to the bottom of the file. &lt;/p&gt;
+&lt;p&gt;&lt;img alt="Cron" src="./images/cron.JPG"&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;code&gt;* * * * *&lt;/code&gt;: run every minute of every day&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;cd ~/recon-ng&lt;/code&gt;: enter the recon-ng directory&lt;/li&gt;
@@ -165,10 +173,10 @@
 &lt;h4&gt;Troubleshooting Tip&lt;/h4&gt;
 &lt;p&gt;Because the cronjob doesn't run the recon-ng in your terminal, you're not going to &lt;em&gt;see&lt;/em&gt; it run at whatever interval you specified it to. A simple way to ensure that your cron job is working is to spin up recon-ng, enter your workspace, and run the &lt;code&gt;show dashboard&lt;/code&gt; command again. If the &lt;code&gt;Runs&lt;/code&gt; count for the &lt;code&gt;recon/locations-pushpins/twitter&lt;/code&gt; is increasing, your cron job is working!&lt;/p&gt;
 &lt;div class="footnote"&gt;
-&lt;hr /&gt;
+&lt;hr&gt;
 &lt;ol&gt;
-&lt;li id="fn:1"&gt;
-&lt;p&gt;Cron jobs can sometimes be difficult. In my experience, most issues with cron jobs have turned out to be filepath and permission issues. You can find a more detailed introduction to cron jobs &lt;a href="https://code.tutsplus.com/tutorials/scheduling-tasks-with-cron-jobs--net-8800"&gt;here&lt;/a&gt;.&amp;#160;&lt;a class="footnote-backref" href="#fnref:1" rev="footnote" title="Jump back to footnote 1 in the text"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+&lt;li id="fn-1"&gt;
+&lt;p&gt;Cron jobs can sometimes be difficult. In my experience, most issues with cron jobs have turned out to be filepath and permission issues. You can find a more detailed introduction to cron jobs &lt;a href="https://code.tutsplus.com/tutorials/scheduling-tasks-with-cron-jobs--net-8800"&gt;here&lt;/a&gt;.&amp;#160;&lt;a class="footnote-backref" href="#fnref-1" title="Jump back to footnote 1 in the text"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;/div&gt;</summary><category term="OSINT"></category><category term="Python"></category><category term="Twitter"></category></entry></feed>
+&lt;/div&gt;</content><category term="OSINT"></category><category term="Python"></category><category term="Twitter"></category></entry></feed>

@@ -108,7 +108,7 @@
 <p>Because there are dozens of free collection tools that allow anyone to systematically harvest and analyze these public posts, the ubiquity of social media brings with it organizational risks that businesses are still learning how to mitigate.</p>
 <p><em>Recon-ng</em>, one of the more comprehensive tools, is a web reconnaissance framework that comes pre-installed with Kali Linux and can be used to automate the collection and visualization of social media posts that contain geographic metadata.</p>
 <p>Visualizing collected posts for a specificed geographic location can lead to some great insights, which recon-ng provides via its <em>pushpins</em> feature by grabbing location metadata (latitude, longitude) from geo-tagged posts in a defined radius, and plotting them with Google Maps.</p>
-<p><img alt="Map" src="./images/map2.JPG" /></p>
+<p><img alt="Map" src="./images/map2.JPG"></p>
 <p>Tim Tomes, the author of recon-ng, has a great video (<a href="https://www.youtube.com/watch?v=BwopO7dxT98">Recon-ng Pushpin Intro</a>) which can quickly bring you up to speed on the feature before we make a small change to the source, and ultimately automate the framework's collection capabilities.</p>
 <p>Recon-ng comes with modules for pulling posts from Flickr, Instagram, Picasa, Shodan, Twitter, and Youtube. For the sake of simplicity (not to mention, <a href="https://dev.twitter.com/overview/api/tweets">a single tweet</a> has <em>a lot</em> of data), we'll just use Twitter. </p>
 <h2>Clone the Source</h2>
@@ -116,13 +116,13 @@
 <p>Open up a terminal in your Kali Linux VM and enter <code>git clone https://bitbucket.org/LaNMaSteR53/recon-ng.git</code> to clone the source onto your machine.</p>
 <p>The file structure should (roughly) look like this:</p>
 <blockquote>
-<p>-- recon-ng<br />
-| -- data/<br />
-| -- modules/<br />
-| -- recon/<br />
-| -- recon-cli<br />
-| -- recon-ng<br />
-| -- recon-rpc<br />
+<p>-- recon-ng<br>
+| -- data/<br>
+| -- modules/<br>
+| -- recon/<br>
+| -- recon-cli<br>
+| -- recon-ng<br>
+| -- recon-rpc<br>
 | -- recon-web  </p>
 </blockquote>
 <h2>Modify the Twitter Module</h2>
@@ -158,12 +158,12 @@
 <p>Remember, database interaction is the central mechanism in the recon-ng framework. Just like the <em>Keys</em> table for your API credentials, the <em>Locations</em> table allows users to store addresses and coordinates.</p>
 <p>Enter <code>add locations</code>. Assuming that you don't know the latititude and longitude of your target locations, skip those options when prompted (press enter), but specify an address.</p>
 <p>The <code>geocode</code> module will provide the exact latitude and longitude of the target address. Enter <code>load recon/locations-locations/geocode</code> and then <code>run</code>. The <code>show locations</code> command will print the <em>Locations</em> table, which should now have a completed row (latititude, longitude, address).</p>
-<p><img alt="Locations Table" src="./images/locations.JPG" /></p>
+<p><img alt="Locations Table" src="./images/locations.JPG"></p>
 <h4>Twitter Search</h4>
 <p>The <code>twitter.py</code> module we modified will use Twitter's Search API to pull tweets that were created within close proximity to the target location. Load the module by entering <code>load recon/locations-pushpins/twitter</code> and then - you guessed it - <code>run</code>. </p>
 <p>Results are stored as <em>pushpins</em> for the map that we're going to produce at the end. </p>
 <p>The <code>show dashboard</code> command will present a brief overview of your activity and results, including how many times you've run each module in the current workspace, and how many pushpins (tweets, in our case) you've harvested.</p>
-<p><img alt="Dashboard" src="./images/dashboard.JPG" /></p>
+<p><img alt="Dashboard" src="./images/dashboard.JPG"></p>
 <h4>Reporting &amp; Visualizing</h4>
 <p>Remember, the point of this exercise is to visualize the geotagged social media posts we've collected and plot them within a specified radius of our target locations. </p>
 <p>Recon-ng's <em>reporting</em> module makes this effortless. Enter these commands:</p>
@@ -176,7 +176,7 @@
 <li><code>run</code></li>
 </ul>
 <p>After following these steps, the <code>reporting/pushpins</code> module will generate two reports in your browser. The first will chronologically list all of your pushpins in a column (which we're not concerned with here), and the second will plot all of the geotagged posts as pushpins on a Google map.</p>
-<p><img alt="Map" src="./images/map3.JPG" /></p>
+<p><img alt="Map" src="./images/map3.JPG"></p>
 <p>You can interact with any of these pushpins. Each pushpin has a link to the user's Twitter profile and a link to the specific tweet that you collected.</p>
 <h2>Automating the Process</h2>
 <p>With the help of a resource file and cron job, we won't have to repeat these steps every time we want to collect geotagged posts and store them in our workspace. </p>
@@ -196,8 +196,8 @@
 <p>If you want to visualize how the resource file feeds your commands to recon-ng, enter the following command in your terminal: <code>./recon-ng -r commands.txt</code>.</p>
 <p>You should see the recon-ng framework start up and enter your specificed workspace, load and run the Twitter module, and exit. </p>
 <h4>Creating a Cron Job</h4>
-<p>Entering <code>sudo contab -e</code> in your terminal will allow you to create new cron jobs, as well as edit any existing cron jobs you may have<sup id="fnref:1"><a class="footnote-ref" href="#fn:1" rel="footnote">1</a></sup>. All cron jobs are added as a single line to the bottom of the file. </p>
-<p><img alt="Cron" src="./images/cron.JPG" /></p>
+<p>Entering <code>sudo contab -e</code> in your terminal will allow you to create new cron jobs, as well as edit any existing cron jobs you may have<sup id="fnref-1"><a class="footnote-ref" href="#fn-1">1</a></sup>. All cron jobs are added as a single line to the bottom of the file. </p>
+<p><img alt="Cron" src="./images/cron.JPG"></p>
 <ul>
 <li><code>* * * * *</code>: run every minute of every day</li>
 <li><code>cd ~/recon-ng</code>: enter the recon-ng directory</li>
@@ -208,10 +208,10 @@
 <h4>Troubleshooting Tip</h4>
 <p>Because the cronjob doesn't run the recon-ng in your terminal, you're not going to <em>see</em> it run at whatever interval you specified it to. A simple way to ensure that your cron job is working is to spin up recon-ng, enter your workspace, and run the <code>show dashboard</code> command again. If the <code>Runs</code> count for the <code>recon/locations-pushpins/twitter</code> is increasing, your cron job is working!</p>
 <div class="footnote">
-<hr />
+<hr>
 <ol>
-<li id="fn:1">
-<p>Cron jobs can sometimes be difficult. In my experience, most issues with cron jobs have turned out to be filepath and permission issues. You can find a more detailed introduction to cron jobs <a href="https://code.tutsplus.com/tutorials/scheduling-tasks-with-cron-jobs--net-8800">here</a>.&#160;<a class="footnote-backref" href="#fnref:1" rev="footnote" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+<li id="fn-1">
+<p>Cron jobs can sometimes be difficult. In my experience, most issues with cron jobs have turned out to be filepath and permission issues. You can find a more detailed introduction to cron jobs <a href="https://code.tutsplus.com/tutorials/scheduling-tasks-with-cron-jobs--net-8800">here</a>.&#160;<a class="footnote-backref" href="#fnref-1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
 </li>
 </ol>
 </div>
