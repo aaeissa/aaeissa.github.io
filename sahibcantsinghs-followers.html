@@ -1,0 +1,382 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link href='//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,400italic' rel='stylesheet' type='text/css'>
+
+    <link rel="stylesheet" type="text/css" href="https://aaeissa.github.io/theme/stylesheet/style.min.css">
+
+  <link rel="stylesheet" type="text/css" href="https://aaeissa.github.io/theme/pygments/monokai.min.css">
+  <link rel="stylesheet" type="text/css" href="https://aaeissa.github.io/theme/font-awesome/css/font-awesome.min.css">
+
+
+    <link href="https://aaeissa.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Ahmed Eissa Atom">
+
+
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="" />
+
+    <!-- Chrome, Firefox OS and Opera -->
+    <meta name="theme-color" content="#333333">
+    <!-- Windows Phone -->
+    <meta name="msapplication-navbutton-color" content="#333333">
+    <!-- iOS Safari -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+<meta name="author" content="Ahmed" />
+<meta name="description" content="An analysis of @Sahibcantsingh's recent surge in Twitter followers." />
+<meta name="keywords" content="Twitter">
+<meta property="og:site_name" content="Ahmed Eissa"/>
+<meta property="og:title" content="@SahibCantSingh & Spreadsheet that Went Viral"/>
+<meta property="og:description" content="An analysis of @Sahibcantsingh's recent surge in Twitter followers."/>
+<meta property="og:locale" content="en_US"/>
+<meta property="og:url" content="https://aaeissa.github.io/sahibcantsinghs-followers.html"/>
+<meta property="og:type" content="article"/>
+<meta property="article:published_time" content="2017-12-21 12:00:00-05:00"/>
+<meta property="article:modified_time" content=""/>
+<meta property="article:author" content="https://aaeissa.github.io/author/ahmed.html">
+<meta property="article:section" content="Python"/>
+<meta property="article:tag" content="Twitter"/>
+<meta property="og:image" content="/images/profile_pic.jpeg">
+
+  <title>Ahmed Eissa &ndash; @SahibCantSingh & Spreadsheet that Went Viral</title>
+
+</head>
+<body>
+  <aside>
+    <div>
+      <a href="https://aaeissa.github.io">
+        <img src="/images/profile_pic.jpeg" alt="" title="">
+      </a>
+      <h1><a href="https://aaeissa.github.io"></a></h1>
+
+<p>Policy & Python</p>
+      <nav>
+        <ul class="list">
+          <li><a href="https://aaeissa.github.io/pages/About.html#About">About</a></li>
+          <li><a href="https://aaeissa.github.io/pages/Tech Policy Issues.html#Tech Policy Issues">Current Issues</a></li>
+
+        </ul>
+      </nav>
+
+      <ul class="social">
+        <li><a class="sc-twitter" href="https://twitter.com/Ahmed_A_Eissa" target="_blank"><i class="fa fa-twitter"></i></a></li>
+        <li><a class="sc-linkedin" href="https://www.linkedin.com/in/ahmed-a-eissa/" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+        <li><a class="sc-github" href="https://github.com/aaeissa" target="_blank"><i class="fa fa-github"></i></a></li>
+      </ul>
+    </div>
+
+
+  </aside>
+  <main>
+
+    <nav>
+      <a href="https://aaeissa.github.io">    Home
+</a>
+
+      <a href="/archives.html">Archives</a>
+      <a href="/categories.html">Categories</a>
+      <a href="/tags.html">Tags</a>
+
+      <a href="https://aaeissa.github.io/feeds/all.atom.xml">    Atom
+</a>
+
+    </nav>
+
+<article class="single">
+  <header>
+    <h1 id="sahibcantsinghs-followers">@SahibCantSingh & Spreadsheet that Went Viral</h1>
+    <p>
+          Posted on Thu 21 December 2017 in <a href="https://aaeissa.github.io/category/python.html">Python</a>
+
+
+    </p>
+  </header>
+
+
+  <div>
+    <p>Recently, my good friend and aspiring comedian Sahib went viral. It started on <a href="https://twitter.com/SahibCantSingh">Twitter</a>, spread to <a href="https://www.instagram.com/SahibCantSingh/">Instagram</a>, and he even made the front page of <a href="https://www.reddit.com/r/indianpeoplefacebook/comments/7fumbb/you_better_like_his_posts/">Reddit</a> a few times. </p>
+<p>It all started when his sister begged the Twitterverse to urge Sahib to delete his Instagram account.</p>
+<blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">Can someone confiscate my brother&#39;s Instagram <a href="https://t.co/Ehxh8oQLPz">pic.twitter.com/Ehxh8oQLPz</a></p>&mdash; sunmeet kaur (@meetdasun) <a href="https://twitter.com/meetdasun/status/934528074196176896?ref_src=twsrc%5Etfw">November 25, 2017</a></blockquote>
+
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+<p>Often accompanied by an expressionless selfie, Sahib embeds subtle, scathing critiques of society, materialism, and the humble-brag culture that plagues social media. If one thing's unanimous, though, it's that his commentary is comedic gold.  </p>
+<p>In one picture where Sahib is positioned in front of an Excel spreadsheet, he scolds a select few of his 300-and-some-odd followers for not liking his pictures. Those with three infractions have been highlighted and red and can expect to receive an "in person consultation." The now infamous <em>spreadsheet post</em> has been removed, restored, and removed again by Instagram - a move that has seriously agitated the funny man's fan base.  </p>
+<p>Sahib has a lot more followers now, and I would be a horrible friend if I didn't help keep tabs on them. </p>
+<p>Thankfully, Python makes this pretty easy. </p>
+<h3>Twitter API</h3>
+<p>Working with Twitter's API is incredibly simple for anyone who knows the basics of Python. After grabbing a free <a href="https://apps.twitter.com/">API key</a> from their site, run the script below to grab data on a given user's followers.  </p>
+<p>(Note: I use the <a href="http://tweepy.readthedocs.io/en/v3.5.0/">Tweepy</a> library to access Twitter's API. In my experience, it's by far the easiest library for working with Twitter). </p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">import</span> <span class="nn">time</span>
+
+<span class="kn">import</span> <span class="nn">tweepy</span>
+
+
+<span class="n">consumer_key</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+<span class="n">consumer_secret</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+<span class="n">access_token</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+<span class="n">access_token_secret</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+
+<span class="n">screen_name</span> <span class="o">=</span> <span class="s1">&#39;SahibCantSingh&#39;</span>
+
+<span class="n">auth</span> <span class="o">=</span> <span class="n">tweepy</span><span class="o">.</span><span class="n">OAuthHandler</span><span class="p">(</span><span class="n">consumer_key</span><span class="p">,</span> <span class="n">consumer_secret</span><span class="p">)</span>
+<span class="n">auth</span><span class="o">.</span><span class="n">set_access_token</span><span class="p">(</span><span class="n">access_token</span><span class="p">,</span> <span class="n">access_token_secret</span><span class="p">)</span>
+
+<span class="n">api</span> <span class="o">=</span> <span class="n">tweepy</span><span class="o">.</span><span class="n">API</span><span class="p">(</span><span class="n">auth</span><span class="p">)</span>
+<span class="n">followers</span> <span class="o">=</span> <span class="n">tweepy</span><span class="o">.</span><span class="n">Cursor</span><span class="p">(</span><span class="n">api</span><span class="o">.</span><span class="n">followers</span><span class="p">,</span>
+                          <span class="n">screen_name</span><span class="o">=</span><span class="n">screen_name</span><span class="p">,</span>
+                          <span class="n">count</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
+
+<span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">follower</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">followers</span><span class="p">)</span>
+        <span class="n">json_data</span> <span class="o">=</span> <span class="n">follower</span><span class="o">.</span><span class="n">_json</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;sahibs_followers.json&#39;</span><span class="p">,</span> <span class="s1">&#39;a+&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">outfile</span><span class="p">:</span>
+            <span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">json_data</span><span class="p">,</span> <span class="n">outfile</span><span class="p">)</span>
+            <span class="n">outfile</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="k">except</span> <span class="n">tweepy</span><span class="o">.</span><span class="n">error</span><span class="o">.</span><span class="n">RateLimitError</span><span class="p">:</span>
+        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">60</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">StopIteration</span><span class="p">:</span>
+        <span class="k">break</span>
+</pre></div>
+
+
+<p>Twitter imposes some pretty frustrating rate limiting, only allowing authenticated users to make a certain amount of <a href="https://developer.twitter.com/en/docs/accounts-and-users/follow-search-get-users/api-reference/get-users-lookup">requests</a> within sliding 15 minute windows.  </p>
+<p>The first time around, I used <code>time.sleep(60*15)</code> to wait 15 minutes when I was rate limited, but my connection would be lost entirely after ten minutes or so. To avoid this, I opted to sleep for one minute and then <em>attempt</em> to get the next set of followers returned by the <code>Cursor</code>.  </p>
+<p>Obviously, if I already made the maxium amount of requests in the 15 minute window, the API call would fail 15 times. But communicating with the API kept the connection alive. It's a workaround, but it does the job (how many times has that been said before?).  </p>
+<p>The script writes each the JSON data for each follower to a new line in the <code>sahibs_followers.json</code> file, which will be convenient for subsequent analysis.</p>
+<h3>Taking a Look</h3>
+<p>We'll use <code>pandas</code> for the bulk of our analysis, with <code>json</code> and <code>datetime</code> to help us out a little along the way.  <code>Plotly</code> is an interactive plotting library that let's you host visualizations in the cloud, and <code>cufflinks</code> binds plotly directly to pandas dataframes.  </p>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
+<span class="kn">import</span> <span class="nn">json</span>
+
+<span class="kn">import</span> <span class="nn">cufflinks</span> <span class="kn">as</span> <span class="nn">cf</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">plotly</span>
+<span class="n">plotly</span><span class="o">.</span><span class="n">tools</span><span class="o">.</span><span class="n">set_credentials_file</span><span class="p">(</span><span class="n">username</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">api_key</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;sahibs_followers.json&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">line</span><span class="p">)</span> <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">f</span><span class="p">]</span>
+
+<span class="n">follower_dict</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">user</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">user</span> <span class="ow">in</span> <span class="n">data</span><span class="p">],</span>
+     <span class="s1">&#39;screen_name&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">user</span><span class="p">[</span><span class="s1">&#39;screen_name&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">user</span> <span class="ow">in</span> <span class="n">data</span><span class="p">],</span>
+     <span class="s1">&#39;locations&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">user</span><span class="p">[</span><span class="s1">&#39;location&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">user</span> <span class="ow">in</span> <span class="n">data</span><span class="p">],</span>
+     <span class="s1">&#39;protected&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">user</span><span class="p">[</span><span class="s1">&#39;protected&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">user</span> <span class="ow">in</span> <span class="n">data</span><span class="p">],</span>
+     <span class="s1">&#39;followers_count&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">user</span><span class="p">[</span><span class="s1">&#39;followers_count&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">user</span> <span class="ow">in</span> <span class="n">data</span><span class="p">],</span>
+     <span class="s1">&#39;favorites_count&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">user</span><span class="p">[</span><span class="s1">&#39;favourites_count&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">user</span> <span class="ow">in</span> <span class="n">data</span><span class="p">],</span>
+     <span class="s1">&#39;time_zone&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">user</span><span class="p">[</span><span class="s1">&#39;time_zone&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">user</span> <span class="ow">in</span> <span class="n">data</span><span class="p">],</span>
+     <span class="s1">&#39;geo_enabled&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">user</span><span class="p">[</span><span class="s1">&#39;geo_enabled&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">user</span> <span class="ow">in</span> <span class="n">data</span><span class="p">],</span>
+     <span class="s1">&#39;language&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">user</span><span class="p">[</span><span class="s1">&#39;lang&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">user</span> <span class="ow">in</span> <span class="n">data</span><span class="p">],</span>
+     <span class="s1">&#39;created_at&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">user</span><span class="p">[</span><span class="s1">&#39;created_at&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">user</span> <span class="ow">in</span> <span class="n">data</span><span class="p">],</span>
+     <span class="s1">&#39;default_profile&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">user</span><span class="p">[</span><span class="s1">&#39;default_profile&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">user</span> <span class="ow">in</span> <span class="n">data</span><span class="p">],</span>
+     <span class="s1">&#39;default_profile_image&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">user</span><span class="p">[</span><span class="s1">&#39;default_profile_image&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">user</span> <span class="ow">in</span> <span class="n">data</span><span class="p">]</span>
+    <span class="p">}</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">follower_dict</span><span class="p">)</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;created_at&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;created_at&#39;</span><span class="p">])</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;time_zone&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;time_zone&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;US &amp; Canada&#39;</span><span class="p">,</span><span class="s1">&#39;US&#39;</span><span class="p">)</span>
+</pre></div>
+
+
+<p>After opening the JSON JSON file and reading it line by line (or rather, user by user), we use a few list comprehensions to create a dictionary that we'll use as the data for our dataframe. Lastly, we convert the <code>created_at</code> field from the Twitter API into a pandas compatible datetime format, and then shorten some time zone names to make our future graphs look cleaner.</p>
+<h3>Time Zones</h3>
+<p>Looking at the most common time zones of a user's followers can yield some interesting insights. You might not want to post your funniest content, for example, when everyone's assleep.  </p>
+<p>Below, we can grab the unique values in the <code>time_zone</code> column of the dataframe, sort them by frequency, and plot them. </p>
+<div class="highlight"><pre><span></span><span class="n">time_zones</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;time_zone&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()[:</span><span class="mi">20</span><span class="p">]</span>
+<span class="n">time_zones</span><span class="o">.</span><span class="n">iplot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">,</span>
+                 <span class="n">yTitle</span><span class="o">=</span><span class="s1">&#39;Number of Users&#39;</span><span class="p">,</span>
+                 <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Top 20 Time Zones of @SahibCantSingh</span><span class="se">\&#39;</span><span class="s1">s Followers&#39;</span><span class="p">)</span>
+</pre></div>
+
+
+<div>
+    <a href="https://plot.ly/~ahmedeissa/88/?share_key=b3K466vmxuiNDKl1ma1ErR" target="_blank" title="Top Time Zones of @SahibCantSingh&#39;s Followers" style="display: block; text-align: center;"><img src="https://plot.ly/~ahmedeissa/88.png?share_key=b3K466vmxuiNDKl1ma1ErR" alt="Top Time Zones of @SahibCantSingh&#39;s Followers" style="max-width: 100%;width: 600px;"  width="600" onerror="this.onerror=null;this.src='https://plot.ly/404.png';" /></a>
+    <script data-plotly="ahmedeissa:88" sharekey-plotly="b3K466vmxuiNDKl1ma1ErR" src="https://plot.ly/embed.js" async></script>
+</div>
+
+<h3>Languages</h3>
+<p>Language settings on Twitter can grant additional insight into follower demographics as well, and can serve as a loose substitute for geographic data (getting geo data is much easier when analyzing Tweets, as there's a <code>coordinates</code> field in the <a href="https://developer.twitter.com/en/docs/tweets/data-dictionary/overview/tweet-object">Tweet Object</a>).  </p>
+<p>In Sahib's case, it's obvious (I peaked to make sure) that most followers will be English speakers. Let's have a look at the most common non-English languages.  </p>
+<p>The two letter language codes (ISO 639-1) can be referenced <a href="https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes">here</a>.</p>
+<div class="highlight"><pre><span></span><span class="n">lang_df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;language&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s1">&#39;en&#39;</span><span class="p">)</span> <span class="o">==</span> <span class="bp">False</span><span class="p">]</span>
+<span class="n">lang_df</span><span class="p">[</span><span class="s1">&#39;language&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+
+<span class="n">languages</span> <span class="o">=</span> <span class="n">lang_df</span><span class="p">[</span><span class="s1">&#39;language&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()[:</span><span class="mi">20</span><span class="p">]</span>
+<span class="n">languages</span><span class="o">.</span><span class="n">iplot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">,</span>
+                <span class="n">yTitle</span><span class="o">=</span><span class="s1">&#39;Number of Users&#39;</span><span class="p">,</span>
+                <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Top 20 Languages of @SahibCantSingh</span><span class="se">\&#39;</span><span class="s1">s Followers&#39;</span><span class="p">)</span>
+</pre></div>
+
+
+<div>
+    <a href="https://plot.ly/~ahmedeissa/90/?share_key=3yAb211StftKVRxbfdy3WI" target="_blank" title="Top (non-Eng) Languages of @SahibCantSingh&#39;s Followers" style="display: block; text-align: center;"><img src="https://plot.ly/~ahmedeissa/90.png?share_key=3yAb211StftKVRxbfdy3WI" alt="Top (non-Eng) Languages of @SahibCantSingh&#39;s Followers" style="max-width: 100%;width: 600px;"  width="600" onerror="this.onerror=null;this.src='https://plot.ly/404.png';" /></a>
+    <script data-plotly="ahmedeissa:90" sharekey-plotly="3yAb211StftKVRxbfdy3WI" src="https://plot.ly/embed.js" async></script>
+</div>
+
+<p>We can also take a look at the <em>behavior</em> of users, grouped by their language. Below, we'll group the user's of non-English languages to see the average amount of likes a user in a certain language has.  </p>
+<div class="highlight"><pre><span></span><span class="n">lang_mean</span> <span class="o">=</span> <span class="n">lang_df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;language&#39;</span><span class="p">)[</span><span class="s1">&#39;favorites_count&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="n">lang_mean</span><span class="o">.</span><span class="n">iplot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">,</span>
+                <span class="n">xTitle</span><span class="o">=</span><span class="s1">&#39;Number of Likes&#39;</span><span class="p">,</span>
+                <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Average # of Likes per Language&#39;</span><span class="p">)</span>
+</pre></div>
+
+
+<div>
+    <a href="https://plot.ly/~ahmedeissa/92/?share_key=VMseAGu8QUL4uFaJ8vnVBV" target="_blank" title="Average # of Likes per Language" style="display: block; text-align: center;"><img src="https://plot.ly/~ahmedeissa/92.png?share_key=VMseAGu8QUL4uFaJ8vnVBV" alt="Average # of Likes per Language" style="max-width: 100%;width: 600px;"  width="600" onerror="this.onerror=null;this.src='https://plot.ly/404.png';" /></a>
+    <script data-plotly="ahmedeissa:92" sharekey-plotly="VMseAGu8QUL4uFaJ8vnVBV" src="https://plot.ly/embed.js" async></script>
+</div>
+
+<p>Right away, we have an interesting find. Serbian (<code>sr</code>) wasn't in the top 20 non-English languages, but they have the highest average favorite count.  </p>
+<p>We can quickly look through the dataframe to find all users whose language is <code>sr</code> with the following line of code: </p>
+<ul>
+<li><code>lang_df[lang_df['language'] == 'sr']</code> </li>
+</ul>
+<p>Out of the 15,000+ users we have in our dataframe, the criteria returns only one Twitter user with the screen name <em>Kaca14Petkovic</em>, who indeed has well over 40,000 likes.</p>
+<p><img alt="sr" src="./images/sr_follower.JPG">  </p>
+<p>We'll also look at the behavior of the English speaking audience. After a little cleaning ("en-gb" and "en-GB" were both present in the dataframe, but represent the same language), we group the English speaking users and plot their average number of likes on Twitter.  </p>
+<div class="highlight"><pre><span></span><span class="n">eng_df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;language&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s1">&#39;en&#39;</span><span class="p">)]</span>
+<span class="n">eng_df</span><span class="p">[</span><span class="s1">&#39;language&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">eng_df</span><span class="p">[</span><span class="s1">&#39;language&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+
+<span class="n">eng_mean</span> <span class="o">=</span> <span class="n">eng_df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;language&#39;</span><span class="p">)[</span><span class="s1">&#39;favorites_count&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="n">eng_mean</span><span class="o">.</span><span class="n">iplot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;barh&#39;</span><span class="p">,</span>
+               <span class="n">xTitle</span><span class="o">=</span><span class="s1">&#39;Number of Likes&#39;</span><span class="p">,</span>
+               <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Average # of Likes per Language (English)&#39;</span><span class="p">)</span>
+</pre></div>
+
+
+<div>
+    <a href="https://plot.ly/~ahmedeissa/100/?share_key=cGKRTK9rottWPnS7bjvz0K" target="_blank" title="Average # of Likes per Language (English)" style="display: block; text-align: center;"><img src="https://plot.ly/~ahmedeissa/100.png?share_key=cGKRTK9rottWPnS7bjvz0K" alt="Average # of Likes per Language (English)" style="max-width: 100%;width: 600px;"  width="600" onerror="this.onerror=null;this.src='https://plot.ly/404.png';" /></a>
+    <script data-plotly="ahmedeissa:100" sharekey-plotly="cGKRTK9rottWPnS7bjvz0K" src="https://plot.ly/embed.js" async></script>
+</div>
+
+<p><code>en</code> (which I assume is the United States' userbase) has greater average, with <code>en-gb</code> (10,523) and <code>en-au</code> (10,521) coming in behind at almost identical averages.</p>
+<h3>Bot or Not</h3>
+<p>Presently, there's a lot of talk about social media bots, especially given the foreign influence (via online disinformation campaigns) in the 2016 US presidential election. Geopolitics aside, automating social media accounds is a trivial pursuit, especially for Twitter.</p>
+<p>Without delving into complex statisical models (of which I am certainly not familiar with) to estimate whether an account is real or not, the Twitter <a href="https://developer.twitter.com/en/docs/tweets/data-dictionary/overview/user-object">User object</a> provides some useful fields in making a slightly less-scientific estimate.  </p>
+<h4>Account Age</h4>
+<p>The <code>created_at</code> field gives us the timestamp of when a Twitter account was created. We can take the difference between a current timestamp (or rather, when I originally did the analysis) and the <code>created_at</code> field to get a user's account age, or how long an account has existed.  </p>
+<p>More on working with timedeltas can be found <a href="https://docs.python.org/3/library/datetime.html">here</a>.</p>
+<div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;created_at&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;created_at&#39;</span><span class="p">])</span>
+<span class="n">df</span><span class="p">[</span><span class="s2">&quot;user_age&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;created_at&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span> <span class="o">-</span> <span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">total_seconds</span><span class="p">()</span> <span class="o">/</span> <span class="mi">3600</span> <span class="o">/</span> <span class="mi">24</span> <span class="o">/</span> <span class="mi">365</span><span class="p">)</span>
+
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;user_age&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">iplot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;histogram&#39;</span><span class="p">,</span>
+                     <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Account Age of @Sahibcantsingh</span><span class="se">\&#39;</span><span class="s1">s Followers&#39;</span><span class="p">,</span>
+                     <span class="n">xTitle</span><span class="o">=</span><span class="s1">&#39;Twitter account age in years&#39;</span><span class="p">,</span>
+                     <span class="n">yTitle</span><span class="o">=</span><span class="s1">&#39;# of Followers&#39;</span><span class="p">)</span>
+</pre></div>
+
+
+<div>
+    <a href="https://plot.ly/~ahmedeissa/94/?share_key=iHfjOynvIZB1zeqD0pPGTN" target="_blank" title="Account Age of @Sahibcantsingh&#39;s Followers" style="display: block; text-align: center;"><img src="https://plot.ly/~ahmedeissa/94.png?share_key=iHfjOynvIZB1zeqD0pPGTN" alt="Account Age of @Sahibcantsingh&#39;s Followers" style="max-width: 100%;width: 600px;"  width="600" onerror="this.onerror=null;this.src='https://plot.ly/404.png';" /></a>
+    <script data-plotly="ahmedeissa:94" sharekey-plotly="iHfjOynvIZB1zeqD0pPGTN" src="https://plot.ly/embed.js" async></script>
+</div>
+
+<p>A quick glance at the histogram above shows that most of Sahib's Twitter followers have been on Twitter for 3.5-6.5 years. There are plenty of accounts that are younger than that, and many that are much older.  </p>
+<p>Calling the <code>max()</code> method on the <code>user_age</code> Series (dataframe column) shows the "oldest" follower has been on Twitter for over 11 years.  </p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">df</span><span class="o">.</span><span class="n">user_age</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="mf">11.43</span>
+</pre></div>
+
+
+<p>The account age distribution gives us additional confidence that the vast majority of accounts aren't automated bots.</p>
+<h4>Default Profiles &amp; Images</h4>
+<p>For years, the hallmark of a <em>Twitter Egg</em> was a default profile and image. These features became so synonymous with bots and trolls that Twitter eventually changed the default egg profile picture to a human silhouette.  </p>
+<p>From Twitter's <a href="https://blog.twitter.com/official/en_us/topics/product/2017/rethinking-our-default-profile-photo.html">official blog</a> in March 2017:  </p>
+<blockquote>
+<p>We’ve noticed patterns of behavior with accounts that are created only to harass others – often they don’t take the time to personalize their accounts. This has created an association between the default egg profile photo and negative behavior, which isn’t fair to people who are still new to Twitter and haven’t yet personalized their profile photo.</p>
+</blockquote>
+<p>The boolean <code>default_profile</code> field in the Twitter User object indicates whether or not a user has altered the theme or background of their user profile.  </p>
+<p>Once we extract the <code>default_profile</code> values from our dataframe, we'll make a new dataframe consisting of the labels (True and False) and their count to visualize them in a pie chart.</p>
+<div class="highlight"><pre><span></span><span class="n">pie_count</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;default_profile&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+<span class="n">pie_label</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;default_profile&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+
+<span class="n">pie_dict</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;labels&#39;</span><span class="p">:</span> <span class="n">pie_label</span><span class="p">,</span>
+            <span class="s1">&#39;values&#39;</span><span class="p">:</span> <span class="n">pie_count</span><span class="p">}</span>
+
+<span class="n">pie_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">pie_dict</span><span class="p">)</span>
+
+<span class="n">pie_df</span><span class="o">.</span><span class="n">iplot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;pie&#39;</span><span class="p">,</span>
+             <span class="n">labels</span><span class="o">=</span><span class="s1">&#39;labels&#39;</span><span class="p">,</span>
+             <span class="n">values</span><span class="o">=</span><span class="s1">&#39;values&#39;</span><span class="p">,</span>
+             <span class="n">textposition</span><span class="o">=</span><span class="s1">&#39;outside&#39;</span><span class="p">,</span>
+             <span class="n">textinfo</span><span class="o">=</span><span class="s1">&#39;value+percent&#39;</span><span class="p">,</span>
+             <span class="n">title</span><span class="o">=</span><span class="s1">&#39;@Sahibcantsingh</span><span class="se">\&#39;</span><span class="s1">s Followers - Default Profile&#39;</span><span class="p">)</span>
+</pre></div>
+
+
+<div>
+    <a href="https://plot.ly/~ahmedeissa/96/?share_key=cPwzfWbvHd38l2NFHSmkPJ" target="_blank" title="@Sahibcantsingh&#39;s Followers - Default Profile" style="display: block; text-align: center;"><img src="https://plot.ly/~ahmedeissa/96.png?share_key=cPwzfWbvHd38l2NFHSmkPJ" alt="@Sahibcantsingh&#39;s Followers - Default Profile" style="max-width: 100%;width: 600px;"  width="600" onerror="this.onerror=null;this.src='https://plot.ly/404.png';" /></a>
+    <script data-plotly="ahmedeissa:96" sharekey-plotly="cPwzfWbvHd38l2NFHSmkPJ" src="https://plot.ly/embed.js" async></script>
+</div>
+
+<p>Almost half of Sahib's followers have a default profile, but this isn't necessarily a valid indicator of whether an account is a bot or not. Personally, I'm pretty active on Twitter. My profile picture identifies me, and I've no undoubtedly shared other identifying information (e.g., I link to this blog in my Twitter bio). But I've never once considered altering the background of my profile, and I can reasonably assume that hundreds of thousands (or millions) of others haven't either, especially when one considered that Twitter is an idea-centric platform and not one focused on design.  </p>
+<p>The <code>default_profile_image</code> is another boolean field in the Twitter User object, that indicates whether or not a user has uploaded their own profile image.  </p>
+<p>On the surface, this appears to be a more valid indicator for real profiles. We'll construct a new dataframe just as we did for the previous field, and visualize once more with a pie chart.</p>
+<p>Note: I know pie charts are heavily discouraged for effecitive visualizations (read: <a href="https://www.perceptualedge.com/articles/visual_business_intelligence/save_the_pies_for_dessert.pdf">Save the Pies for Dessert</a>), but they're fine when comparing two categories, like we are here. In fact, the significant difference in the size of the two slices below lets a reader quickly compare them and gain insight, which is a little more difficult in the first pie chart because of their similar slice sizes.</p>
+<div class="highlight"><pre><span></span><span class="n">pie_count</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;default_profile_image&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+<span class="n">pie_label</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;default_profile_image&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+
+<span class="n">pie_dict</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;labels&#39;</span><span class="p">:</span> <span class="n">pie_label</span><span class="p">,</span>
+            <span class="s1">&#39;values&#39;</span><span class="p">:</span> <span class="n">pie_count</span>
+           <span class="p">}</span>
+
+<span class="n">pie_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">pie_dict</span><span class="p">)</span>
+<span class="n">pie_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+
+<span class="n">pie_df</span><span class="o">.</span><span class="n">iplot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;pie&#39;</span><span class="p">,</span>
+             <span class="n">labels</span><span class="o">=</span><span class="s1">&#39;labels&#39;</span><span class="p">,</span>
+             <span class="n">values</span><span class="o">=</span><span class="s1">&#39;values&#39;</span><span class="p">,</span>
+             <span class="n">textposition</span><span class="o">=</span><span class="s1">&#39;outside&#39;</span><span class="p">,</span>
+             <span class="n">textinfo</span><span class="o">=</span><span class="s1">&#39;value+percent&#39;</span><span class="p">,</span>
+             <span class="n">title</span><span class="o">=</span><span class="s1">&#39;@Sahibcantsingh</span><span class="se">\&#39;</span><span class="s1">s Followers - Default Profile Image&#39;</span><span class="p">)</span>
+</pre></div>
+
+
+<div>
+    <a href="https://plot.ly/~ahmedeissa/98/?share_key=QHf2zPQJR5gUagCfFatlHa" target="_blank" title="@Sahibcantsingh&#39;s Followers - Default Profile Image" style="display: block; text-align: center;"><img src="https://plot.ly/~ahmedeissa/98.png?share_key=QHf2zPQJR5gUagCfFatlHa" alt="@Sahibcantsingh&#39;s Followers - Default Profile Image" style="max-width: 100%;width: 600px;"  width="600" onerror="this.onerror=null;this.src='https://plot.ly/404.png';" /></a>
+    <script data-plotly="ahmedeissa:98" sharekey-plotly="QHf2zPQJR5gUagCfFatlHa" src="https://plot.ly/embed.js" async></script>
+</div>
+
+<p>Over 98% of Sahib's followers do <em>not</em> have a default picture - indicating they've somehow personalized their profile picture. What remains unknown though, is how many user-uploaded photos are of themselves.  </p>
+<p>Given this figure, coupled with the distribution of account ages, it appears Sahib's recent surge in Twitter followers was organic. </p>
+  </div>
+  <div class="tag-cloud">
+    <p>
+      <a href="https://aaeissa.github.io/tag/twitter.html">Twitter</a>
+    </p>
+  </div>
+
+
+
+
+</article>
+
+    <footer>
+<p>&copy; Ahmed Eissa 2017</p>
+<p>    Powered by <a href="http://getpelican.com" target="_blank">Pelican</a> - <a href="https://github.com/alexandrevicenzi/flex" target="_blank">Flex</a> theme by <a href="http://alexandrevicenzi.com" target="_blank">Alexandre Vicenzi</a>
+</p>    </footer>
+  </main>
+
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " Ahmed Eissa ",
+  "url" : "https://aaeissa.github.io",
+  "image": "/images/profile_pic.jpeg",
+  "description": "Exploring the intersection of technology and policy."
+}
+</script>
+</body>
+</html>
