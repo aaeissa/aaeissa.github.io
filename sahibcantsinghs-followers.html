@@ -32,7 +32,7 @@
 <meta name="description" content="An analysis of @Sahibcantsingh's recent surge in Twitter followers." />
 <meta name="keywords" content="Twitter">
 <meta property="og:site_name" content="Ahmed Eissa"/>
-<meta property="og:title" content="@SahibCantSingh & Spreadsheet that Went Viral"/>
+<meta property="og:title" content="@SahibCantSingh & the Spreadsheet that Went Viral"/>
 <meta property="og:description" content="An analysis of @Sahibcantsingh's recent surge in Twitter followers."/>
 <meta property="og:locale" content="en_US"/>
 <meta property="og:url" content="https://aaeissa.github.io/sahibcantsinghs-followers.html"/>
@@ -44,7 +44,7 @@
 <meta property="article:tag" content="Twitter"/>
 <meta property="og:image" content="/images/profile_pic.jpeg">
 
-  <title>Ahmed Eissa &ndash; @SahibCantSingh & Spreadsheet that Went Viral</title>
+  <title>Ahmed Eissa &ndash; @SahibCantSingh & the Spreadsheet that Went Viral</title>
 
 </head>
 <body>
@@ -90,7 +90,7 @@
 
 <article class="single">
   <header>
-    <h1 id="sahibcantsinghs-followers">@SahibCantSingh & Spreadsheet that Went Viral</h1>
+    <h1 id="sahibcantsinghs-followers">@SahibCantSingh & the Spreadsheet that Went Viral</h1>
     <p>
           Posted on Thu 21 December 2017 in <a href="https://aaeissa.github.io/category/python.html">Python</a>
 
@@ -258,10 +258,10 @@
 
 <p><code>en</code> (which I assume is the United States' userbase) has greater average, with <code>en-gb</code> (10,523) and <code>en-au</code> (10,521) coming in behind at almost identical averages.</p>
 <h3>Bot or Not</h3>
-<p>Presently, there's a lot of talk about social media bots, especially given the foreign influence (via online disinformation campaigns) in the 2016 US presidential election. Geopolitics aside, automating social media accounds is a trivial pursuit, especially for Twitter.</p>
+<p>Presently, there's a lot of talk about social media bots, especially given the foreign influence (via online disinformation campaigns) in the 2016 US presidential election. Geopolitics aside, automating social media accounds is trivial, especially for Twitter.</p>
 <p>Without delving into complex statisical models (of which I am certainly not familiar with) to estimate whether an account is real or not, the Twitter <a href="https://developer.twitter.com/en/docs/tweets/data-dictionary/overview/user-object">User object</a> provides some useful fields in making a slightly less-scientific estimate.  </p>
 <h4>Account Age</h4>
-<p>The <code>created_at</code> field gives us the timestamp of when a Twitter account was created. We can take the difference between a current timestamp (or rather, when I originally did the analysis) and the <code>created_at</code> field to get a user's account age, or how long an account has existed.  </p>
+<p>The <code>created_at</code> field gives us the timestamp of when a Twitter account was created. We can take the difference between a current timestamp (or rather, when I originally did the analysis) and their creation timestamp to get a user's account age, or how long an account has existed.  </p>
 <p>More on working with timedeltas can be found <a href="https://docs.python.org/3/library/datetime.html">here</a>.</p>
 <div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;created_at&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;created_at&#39;</span><span class="p">])</span>
 <span class="n">df</span><span class="p">[</span><span class="s2">&quot;user_age&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;created_at&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span> <span class="o">-</span> <span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">total_seconds</span><span class="p">()</span> <span class="o">/</span> <span class="mi">3600</span> <span class="o">/</span> <span class="mi">24</span> <span class="o">/</span> <span class="mi">365</span><span class="p">)</span>
@@ -316,10 +316,10 @@
     <script data-plotly="ahmedeissa:96" sharekey-plotly="cPwzfWbvHd38l2NFHSmkPJ" src="https://plot.ly/embed.js" async></script>
 </div>
 
-<p>Almost half of Sahib's followers have a default profile, but this isn't necessarily a valid indicator of whether an account is a bot or not. Personally, I'm pretty active on Twitter. My profile picture identifies me, and I've no undoubtedly shared other identifying information (e.g., I link to this blog in my Twitter bio). But I've never once considered altering the background of my profile, and I can reasonably assume that hundreds of thousands (or millions) of others haven't either, especially when one considered that Twitter is an idea-centric platform and not one focused on design.  </p>
+<p>Almost half of Sahib's followers have a default profile, but this isn't necessarily a valid indicator of whether an account is a bot or not. Personally, I'm pretty active on Twitter. My profile picture identifies me, and I've undoubtedly shared other identifying information (e.g., I link to this blog in my Twitter bio). But I've never once considered altering the background of my profile, and I can reasonably assume that hundreds of thousands (or millions) of others haven't either, especially when one considers that Twitter is an idea-centric platform and not one focused on design.  </p>
 <p>The <code>default_profile_image</code> is another boolean field in the Twitter User object, that indicates whether or not a user has uploaded their own profile image.  </p>
 <p>On the surface, this appears to be a more valid indicator for real profiles. We'll construct a new dataframe just as we did for the previous field, and visualize once more with a pie chart.</p>
-<p>Note: I know pie charts are heavily discouraged for effecitive visualizations (read: <a href="https://www.perceptualedge.com/articles/visual_business_intelligence/save_the_pies_for_dessert.pdf">Save the Pies for Dessert</a>), but they're fine when comparing two categories, like we are here. In fact, the significant difference in the size of the two slices below lets a reader quickly compare them and gain insight, which is a little more difficult in the first pie chart because of their similar slice sizes.</p>
+<p><strong>Note</strong>: I know pie charts are heavily discouraged for effecitive visualizations (read: <a href="https://www.perceptualedge.com/articles/visual_business_intelligence/save_the_pies_for_dessert.pdf">Save the Pies for Dessert</a>), but they're fine when comparing two categories, like we are here. In fact, the significant difference in the size of the two slices below lets a reader quickly compare them and gain insight, which is a little more difficult in the first pie chart because of their similar slice sizes.</p>
 <div class="highlight"><pre><span></span><span class="n">pie_count</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;default_profile_image&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
 <span class="n">pie_label</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;default_profile_image&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
 
