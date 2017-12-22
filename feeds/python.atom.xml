@@ -132,7 +132,7 @@
 
 &lt;p&gt;We have an interesting find. Serbian (&lt;code&gt;sr&lt;/code&gt;) wasn't in the top 20 non-English languages, but they have the highest average favorite count. Seems like an outlier.&lt;/p&gt;
 &lt;p&gt;We can quickly look through the dataframe to find all users whose language is &lt;code&gt;sr&lt;/code&gt; with the following line of code: &lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="sb"&gt;`lang_df[lang_df[&amp;#39;language&amp;#39;] == &amp;#39;sr&amp;#39;]`&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;lang_df&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;lang_df&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;language&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;sr&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
