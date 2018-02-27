@@ -1,0 +1,338 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link href='//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,400italic' rel='stylesheet' type='text/css'>
+
+    <link rel="stylesheet" type="text/css" href="https://aaeissa.github.io/theme/stylesheet/style.min.css">
+
+  <link rel="stylesheet" type="text/css" href="https://aaeissa.github.io/theme/pygments/monokai.min.css">
+  <link rel="stylesheet" type="text/css" href="https://aaeissa.github.io/theme/font-awesome/css/font-awesome.min.css">
+
+
+    <link href="https://aaeissa.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Ahmed Eissa Atom">
+
+
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="" />
+
+    <!-- Chrome, Firefox OS and Opera -->
+    <meta name="theme-color" content="#333333">
+    <!-- Windows Phone -->
+    <meta name="msapplication-navbutton-color" content="#333333">
+    <!-- iOS Safari -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+<meta name="author" content="Ahmed Eissa" />
+<meta name="description" content="A primer on the relatively new RFC concerning security.txt files, and using python to send asynchronous requests to the top 100k sites using the Alex Top One Million list." />
+<meta name="keywords" content="Python, Security">
+<meta property="og:site_name" content="Ahmed Eissa"/>
+<meta property="og:title" content="Analyzing 100,000 Security.txt Files"/>
+<meta property="og:description" content="A primer on the relatively new RFC concerning security.txt files, and using python to send asynchronous requests to the top 100k sites using the Alex Top One Million list."/>
+<meta property="og:locale" content="en_US"/>
+<meta property="og:url" content="https://aaeissa.github.io/security.html"/>
+<meta property="og:type" content="article"/>
+<meta property="article:published_time" content="2018-02-27 12:00:00-05:00"/>
+<meta property="article:modified_time" content=""/>
+<meta property="article:author" content="https://aaeissa.github.io/author/ahmed-eissa.html">
+<meta property="article:section" content="Python"/>
+<meta property="article:tag" content="Python"/>
+<meta property="article:tag" content="Security"/>
+<meta property="og:image" content="/images/profile_pic.jpeg">
+
+  <title>Ahmed Eissa &ndash; Analyzing 100,000 Security.txt Files</title>
+
+</head>
+<body>
+  <aside>
+    <div>
+      <a href="https://aaeissa.github.io">
+        <img src="/images/profile_pic.jpeg" alt="" title="">
+      </a>
+      <h1><a href="https://aaeissa.github.io"></a></h1>
+
+<p>Policy & Python</p>
+      <nav>
+        <ul class="list">
+          <li><a href="https://aaeissa.github.io/pages/About.html#About">About</a></li>
+          <li><a href="https://aaeissa.github.io/pages/Tech Policy Issues.html#Tech Policy Issues">Current Issues</a></li>
+
+        </ul>
+      </nav>
+
+      <ul class="social">
+        <li><a class="sc-twitter" href="https://twitter.com/Ahmed_A_Eissa" target="_blank"><i class="fa fa-twitter"></i></a></li>
+        <li><a class="sc-linkedin" href="https://www.linkedin.com/in/ahmed-a-eissa/" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+        <li><a class="sc-github" href="https://github.com/aaeissa" target="_blank"><i class="fa fa-github"></i></a></li>
+      </ul>
+    </div>
+
+
+  </aside>
+  <main>
+
+    <nav>
+      <a href="https://aaeissa.github.io">    Home
+</a>
+
+      <a href="/archives.html">Archives</a>
+      <a href="/categories.html">Categories</a>
+      <a href="/tags.html">Tags</a>
+
+      <a href="https://aaeissa.github.io/feeds/all.atom.xml">    Atom
+</a>
+
+    </nav>
+
+<article class="single">
+  <header>
+    <h1 id="security">Analyzing 100,000 Security.txt Files</h1>
+    <p>
+          Posted on Tue 27 February 2018 in <a href="https://aaeissa.github.io/category/python.html">Python</a>
+
+
+    </p>
+  </header>
+
+
+  <div>
+    <p>There's a great initiative that's in its nascence right now in the security community - adding security.txt files to as many domains as possible.</p>
+<p>Similar to a <a href="http://www.robotstxt.org/robotstxt.html">robots.txt file</a>, a security.txt file aims to serve as an authoritative document that guides others in how to contact an organization regarding a vulnerability, data breach, or security incident.</p>
+<p>The endeavor comes in the midst of a somewhat-murky security environment. Security researchers (and those who happen to stumble across something concerning) can be hesitant to disclose their findings fearing legal retaliation. And several have reported that when they've attempted to disclose their findings, they never received a response. A recent article by <a href="http://www.zdnet.com/article/chilling-effect-lawsuits-threaten-security-research-need-it-most/">ZDnet</a> explores this further, detailing the experiences from 11 different security researchers.</p>
+<p>The <a href="https://tools.ietf.org/html/draft-foudil-securitytxt-03">RFC</a> for security.txt documents - known formally as <em>A Method for Web Security Policies</em> - specifies six directives that should be presented to the public:</p>
+<ul>
+<li><strong>Contact</strong>: an address (email, phone, etc.) for reporting security issues. </li>
+<li><strong>Encryption</strong>: a link to the key for the organization's preferred method of encrypted communication.  </li>
+<li><strong>Signature</strong>: a link to an external signature.  </li>
+<li><strong>Policy</strong>: a link to the organization's security and/or disclosure policy.</li>
+<li><strong>Acknowledgement</strong>: a link to a page where security researchers are recognized for their reports. </li>
+<li><strong>Hiring</strong>: information on the organization's security-related job positions.</li>
+</ul>
+<p><img alt="SECURITY_TXT_EXAMPLE" src="./images/security_txt_example.JPG"></p>
+<p>Taking inspiration from a blog I read a few months ago - <a href="https://intoli.com/blog/analyzing-one-million-robots-txt-files/">Analyzing One Million Robots.txt Files</a> - I thought I'd do something similar: check which sites from the Alexa Top One Million Websites have implemented security.txt files.</p>
+<h3>Checking the Alexa Top One Million</h3>
+<p>The author of the aforementioned blog chose to make the one million requests sequentially, noting that there were difficulties which prevented them from successfully .</p>
+<blockquote>
+<p>My first thought was that it should be possible to parallelize these requests because we only need to hit each server once and blocking therefore shouldn’t be an issue. I was all ready to show off python’s shiny new asyncio features, and I put together a script that heavily parallelized the requests, but then quickly discovered that <em>things weren’t so simple</em>.</p>
+</blockquote>
+<p>These were issues (read: <strong>memory</strong>) that I soon became all too familiar with, but I also had no intention to wait for 1,000,000 requests, one by one. Without spending more on resources (I used a Digital Ocean VPS with 4GB RAM/40GB SSD/4 vCPU), I resigned to testing the first 100,000. </p>
+<p>Besides, with each new project, my goal is to explore something new in a manner I haven't done before, leading me to (finally) begin exploring concurrency and parallelism (and there is a <a href="http://learn-gevent-socketio.readthedocs.io/en/latest/general_concepts.html">difference</a>). The implementation was quite simple, but I had to go down a few rabbit holes to fully grasp the concepts.</p>
+<p>Alexa has made the list freely available from an <a href="http://s3.amazonaws.com/alexa-static/top-1m.csv.zip">Amazon S3 Bucket</a>. Unzip the file to get the CSV.</p>
+<p>Once we have the data, we can use python to:</p>
+<ul>
+<li>Read in the CSV file to a dataframe.  </li>
+<li>Parse and clean the URLs to minimize HTTP errors.  </li>
+<li>Thread our requests.  </li>
+<li>Implement a simple scoring process for identifying security.txt pages.  </li>
+<li>Write the results to disk.  </li>
+</ul>
+<p>The entire process took ~4,830.27 seconds (about 80 minutes) to complete for 100,000 sites.</p>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">concurrent.futures</span> <span class="kn">import</span> <span class="n">ThreadPoolExecutor</span><span class="p">,</span> <span class="n">as_completed</span>
+<span class="kn">from</span> <span class="nn">urllib.parse</span> <span class="kn">import</span> <span class="n">urlparse</span>
+
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">from</span> <span class="nn">tldextract</span> <span class="kn">import</span> <span class="n">extract</span>
+
+<span class="n">CONNECTIONS</span> <span class="o">=</span> <span class="mi">1024</span>
+<span class="n">TIMEOUT</span> <span class="o">=</span> <span class="mi">60</span>
+<span class="n">RESULTS</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">DIRECTIVES</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;contact:&#39;</span><span class="p">,</span> <span class="s1">&#39;policy:&#39;</span><span class="p">,</span> <span class="s1">&#39;encryption:&#39;</span><span class="p">,</span> <span class="s1">&#39;acknowledgments:&#39;</span><span class="p">,</span> <span class="s1">&#39;signature:&#39;</span><span class="p">,</span> <span class="s1">&#39;hiring:&#39;</span><span class="p">]</span>
+
+<span class="k">def</span> <span class="nf">get_sites</span><span class="p">():</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;top-1m.csv&#39;</span><span class="p">,</span> <span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Rank&#39;</span><span class="p">,</span> <span class="s1">&#39;Sites&#39;</span><span class="p">])</span>
+    <span class="n">urls</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">url</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">Sites</span><span class="p">[:</span><span class="mi">100000</span><span class="p">]:</span>
+        <span class="n">domain_check</span> <span class="o">=</span> <span class="n">extract</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">domain_check</span><span class="o">.</span><span class="n">subdomain</span><span class="p">:</span>
+            <span class="n">urls</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;http://{}/.well-known/security.txt&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">url</span><span class="p">))</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">urls</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;http://www.{}/.well-known/security.txt&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">url</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">urls</span>
+
+
+<span class="k">def</span> <span class="nf">load_url</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">timeout</span><span class="p">):</span>
+    <span class="n">resp</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="n">timeout</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">resp</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200</span><span class="p">:</span>
+        <span class="n">page</span> <span class="o">=</span> <span class="n">resp</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+        <span class="n">score</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">DIRECTIVES</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">page</span><span class="p">:</span>
+                <span class="n">score</span> <span class="o">+=</span><span class="mi">1</span>
+        <span class="k">if</span> <span class="n">score</span> <span class="o">&gt;=</span> <span class="mi">2</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">url</span>
+    <span class="k">return</span> <span class="bp">None</span>
+
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="n">urls</span><span class="p">):</span>
+    <span class="k">with</span> <span class="n">ThreadPoolExecutor</span><span class="p">(</span><span class="n">max_workers</span><span class="o">=</span><span class="n">CONNECTIONS</span><span class="p">)</span> <span class="k">as</span> <span class="n">executor</span><span class="p">:</span>
+        <span class="n">futures</span> <span class="o">=</span> <span class="p">(</span><span class="n">executor</span><span class="o">.</span><span class="n">submit</span><span class="p">(</span><span class="n">load_url</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">TIMEOUT</span><span class="p">)</span> <span class="k">for</span> <span class="n">url</span> <span class="ow">in</span> <span class="n">urls</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">future</span> <span class="ow">in</span> <span class="n">as_completed</span><span class="p">(</span><span class="n">futures</span><span class="p">):</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">RESULTS</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">future</span><span class="o">.</span><span class="n">result</span><span class="p">())</span>
+            <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">exc</span><span class="p">:</span>
+                <span class="n">RESULTS</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">exc</span><span class="p">)))</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">urls</span> <span class="o">=</span> <span class="n">get_sites</span><span class="p">()</span>
+    <span class="n">main</span><span class="p">(</span><span class="n">urls</span><span class="p">)</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;site_list.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;w+&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">outfile</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">res</span> <span class="ow">in</span> <span class="n">RESULTS</span><span class="p">:</span>
+            <span class="n">outfile</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">res</span><span class="p">)</span><span class="o">+</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+
+
+<p>When ever I need to read in data from CSV files, I usually reach for the simplicity that the <code>pandas</code> library offers. After creating a dataframe, the <code>tldextract</code> library helps find which sites in our list have subdomains in them, allowing us to avoid building URLs with both <code>www.</code> and a subdomain (and thus avoiding a connection error). </p>
+<p>The module's usage is simple:</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span> <span class="nn">tldextract</span> <span class="kn">import</span> <span class="n">extract</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">site</span> <span class="o">=</span> <span class="s1">&#39;www.test.com&#39;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">extract</span><span class="p">(</span><span class="n">site</span><span class="p">)</span>
+<span class="n">ExtractResult</span><span class="p">(</span><span class="n">subdomain</span><span class="o">=</span><span class="s1">&#39;www&#39;</span><span class="p">,</span> <span class="n">domain</span><span class="o">=</span><span class="s1">&#39;test&#39;</span><span class="p">,</span> <span class="n">suffix</span><span class="o">=</span><span class="s1">&#39;com&#39;</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">site</span> <span class="o">=</span> <span class="s1">&#39;alpha.test.com&#39;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">extract</span><span class="p">(</span><span class="n">site</span><span class="p">)</span>
+<span class="n">ExtractResult</span><span class="p">(</span><span class="n">subdomain</span><span class="o">=</span><span class="s1">&#39;alpha&#39;</span><span class="p">,</span> <span class="n">domain</span><span class="o">=</span><span class="s1">&#39;test&#39;</span><span class="p">,</span> <span class="n">suffix</span><span class="o">=</span><span class="s1">&#39;com&#39;</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">extract</span><span class="p">(</span><span class="n">site</span><span class="p">)</span><span class="o">.</span><span class="n">domain</span>
+<span class="s1">&#39;test&#39;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">extract</span><span class="p">(</span><span class="n">site</span><span class="p">)</span><span class="o">.</span><span class="n">subdomain</span>
+<span class="s1">&#39;alpha&#39;</span>
+</pre></div>
+
+
+<p>We'll then pass the list of URLs to our main() function, where we'll use the <code>ThreadPoolExecutor</code> (and not the <code>ProcessPoolExecutor</code> class, since network requests are an I/O bound task) to send asynchronous requests to the 100,000 URLs. Threading allows the program to make other requests if another request hangs. Using a context manager (the <code>with</code> statement) ensures that threads are cleaned up promptly, as it will <em>always</em> call the executor's <code>shutdown()</code> method.</p>
+<p>The task that we're submitting to the <code>executor</code> and creating futures with is our <code>load_url()</code> function, which sends a <code>GET</code> request to all of our URLs. Because we're sending our requests over HTTP and not HTTPS, we're going to allow for redirects, otherwise we may miss security.txt files that live on their secure counterparts. Let's look at Facebook for a quick example:</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">requests</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">resp</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;http://www.facebook.com/.well-known/security.txt&#39;</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">resp</span><span class="o">.</span><span class="n">status_code</span>
+<span class="mi">200</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">resp</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;http://www.facebook.com/.well-known/security.txt&#39;</span><span class="p">,</span> <span class="n">allow_redirects</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">resp</span><span class="o">.</span><span class="n">status_code</span>
+<span class="mi">302</span>
+</pre></div>
+
+
+<p>If a site returns a <code>200</code>, we still need make sure it's a security.txt file, as some web servers are configured to redirect <code>404</code> requests to their home page or serve some other specific page. </p>
+<p>The six directives (contact, encryption, signature, policy, acknowledgements, hiring) outlined in the RFC seem appripriate to check for. At a minimum, we know security.txt files MUST have the "Contact:" directive, but using that as our only condition still returns a few false positives (it's common to have something similar to "contact: example@domain.com" in HTML templates). Ultimately, if the page contains two or more of the directives we're looking for, the URL will be saved.  </p>
+<p>Calling the <a href="https://docs.python.org/3/library/concurrent.futures.html"><code>as_completed()</code></a> method returns an iterator that yields futures as they complete (finished or were cancelled). In computer science, a <code>future</code> is a construct for synchronizing programming execution. Specifically, it represents a means for getting a value sometime in the future. [FOOTNOTE https://www.dartlang.org/tutorials/language/futures].</p>
+<p>When the futures are returned by the <code>as_completed()</code> method, we try to get the result returned by the <code>load_url()</code> function (either the successful URL, or <em>None</em>), else we store the exception that occurred. It's important to note that calling the <code>result()</code> method on each future seems to be the most time consuming part of the program because it's a blocing method - the next line of code doesn't execute until the future's result is available. </p>
+<h3>Document Analysis</h3>
+<p>We'll also perform a little more analysis on the sites where we found security.txt files.</p>
+<p>(Note: all of the below code could very well have been incorporated into the first program, but I prefer to separate the collection + analysis into separate processes. After all, troubleshooting is trivial when working with ~100 requests, and not quite so with 100k.)</p>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">Counter</span>
+<span class="kn">from</span> <span class="nn">concurrent.futures</span> <span class="kn">import</span> <span class="n">ThreadPoolExecutor</span><span class="p">,</span> <span class="n">as_completed</span>
+<span class="kn">from</span> <span class="nn">urllib.parse</span> <span class="kn">import</span> <span class="n">urlparse</span>
+
+<span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">from</span> <span class="nn">tldextract</span> <span class="kn">import</span> <span class="n">extract</span>
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;site_list.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">results</span> <span class="o">=</span> <span class="p">[</span><span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">f</span><span class="o">.</span><span class="n">readlines</span><span class="p">()]</span>
+
+<span class="n">successful_sites</span> <span class="o">=</span> <span class="p">[</span><span class="n">res</span> <span class="k">for</span> <span class="n">res</span> <span class="ow">in</span> <span class="n">results</span> <span class="k">if</span> <span class="n">urlparse</span><span class="p">(</span><span class="n">res</span><span class="p">)</span><span class="o">.</span><span class="n">netloc</span><span class="p">]</span>
+</pre></div>
+
+
+<p>Read in the saved results line by line, and then filter out <code>None</code> results and the saved exceptions. A quick look at <code>successful_sites</code> shows there are <em>a lot</em> of results for Google, but all of the security.txt documents served on the various TLDs are identical to the one hosted at "www.google.com/.well-known/security.txt". Similarly, there were several results for popular Tumblr pages, but there's really only one unique file. </p>
+<p><img alt="Google Results" src="./images/google_security_txt.JPG"></p>
+<p>We can quickly see the count for each:</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">domains</span> <span class="o">=</span> <span class="p">[</span><span class="n">extract</span><span class="p">(</span><span class="n">site</span><span class="p">)</span><span class="o">.</span><span class="n">domain</span> <span class="k">for</span> <span class="n">site</span> <span class="ow">in</span> <span class="n">successful_sites</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">Counter</span><span class="p">(</span><span class="n">domains</span><span class="p">)[</span><span class="s1">&#39;google&#39;</span><span class="p">]</span>
+<span class="mi">176</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">Counter</span><span class="p">(</span><span class="n">domains</span><span class="p">)[</span><span class="s1">&#39;tumblr&#39;</span><span class="p">]</span>
+<span class="mi">37</span>
+</pre></div>
+
+
+<p>We'll handle this by creating a list which filters out these repeated domains, and then adding back in the Google and Tumblr root domains.</p>
+<p>We're left with 62 <code>unique_sites</code> to work with, and once more we can use the <code>concurrent.futures</code> module to thread our requests. For each site, we'll download the page's text to count which directives have been most adopted by the current security.txt files.</p>
+<p>Earlier, we used <code>executor.submit()</code> when we needed to return a URL, but <code>executor.map()</code> is more appropriate here because the <code>check_site()</code> method isn't returning anything (the executor's map method takes a function and an iterable and calls the function for each item in the iterable). </p>
+<div class="highlight"><pre><span></span><span class="n">unique_sites</span> <span class="o">=</span> <span class="p">[</span><span class="n">site</span> <span class="k">for</span> <span class="n">site</span> <span class="ow">in</span> <span class="n">successful</span> <span class="k">if</span> <span class="s1">&#39;google&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">site</span> <span class="k">if</span> <span class="s1">&#39;tumblr&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">site</span><span class="p">]</span>
+<span class="n">unique_sites</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;http://www.google.com/.well-known/security.txt&#39;</span><span class="p">)</span>
+<span class="n">unique_sites</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;http://www.tumblr.com/.well-known/security.txt&#39;</span><span class="p">)</span>
+
+<span class="n">directives</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;contact:&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="s1">&#39;policy:&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="s1">&#39;encryption:&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="s1">&#39;acknowledgments:&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="s1">&#39;signature:&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="s1">&#39;hiring:&#39;</span><span class="p">:</span> <span class="mi">0</span>
+<span class="p">}</span>
+
+<span class="k">def</span> <span class="nf">check_site</span><span class="p">(</span><span class="n">site</span><span class="p">):</span>
+    <span class="n">resp</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">site</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">60</span><span class="p">)</span>
+    <span class="n">page</span> <span class="o">=</span> <span class="n">resp</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">directives</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">page</span><span class="p">:</span>
+            <span class="n">directives</span><span class="p">[</span><span class="n">d</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+
+<span class="k">with</span> <span class="n">ThreadPoolExecutor</span><span class="p">(</span><span class="n">max_workers</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span> <span class="k">as</span> <span class="n">executor</span><span class="p">:</span>
+    <span class="n">executor</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">check_site</span><span class="p">,</span> <span class="n">unique_sites</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">60</span><span class="p">)</span>
+</pre></div>
+
+
+<p>Our <code>directives</code> dictioniary contains our finaly count, which we can plot.  </p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">directives</span>
+<span class="p">{</span><span class="s1">&#39;acknowledgments:&#39;</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span>
+ <span class="s1">&#39;contact:&#39;</span><span class="p">:</span> <span class="mi">62</span><span class="p">,</span>
+ <span class="s1">&#39;encryption:&#39;</span><span class="p">:</span> <span class="mi">34</span><span class="p">,</span>
+ <span class="s1">&#39;hiring:&#39;</span><span class="p">:</span> <span class="mi">36</span><span class="p">,</span>
+ <span class="s1">&#39;policy:&#39;</span><span class="p">:</span> <span class="mi">50</span><span class="p">,</span>
+ <span class="s1">&#39;signature:&#39;</span><span class="p">:</span> <span class="mi">12</span><span class="p">}</span>
+</pre></div>
+
+
+<div>
+    <a href="https://plot.ly/~ahmedeissa/104/?share_key=KImZFxFJzAE5lbG6S6AlD5" target="_blank" title="plot from API (5)" style="display: block; text-align: center;"><img src="https://plot.ly/~ahmedeissa/104.png?share_key=KImZFxFJzAE5lbG6S6AlD5" alt="plot from API (5)" style="max-width: 100%;width: 600px;"  width="600" onerror="this.onerror=null;this.src='https://plot.ly/404.png';" /></a>
+    <script data-plotly="ahmedeissa:104" sharekey-plotly="KImZFxFJzAE5lbG6S6AlD5" src="https://plot.ly/embed.js" async></script>
+</div>
+
+<p>As expected, the "<em>contact:</em>" field is the most common, followed by "<em>policy:</em>". What's interesting though, is "<em>hiring:</em>" as the third most common directive. This directive was only included in the <a href="https://tools.ietf.org/html/draft-foudil-securitytxt-03">third draft</a> of the RFC and is already adopted more than other directives that were included in the earliest versions of the initiative. It's likely that organizations were independently including hiring information in their security.txt files, which caught on with those leading project. </p>
+<h3>Lessons Learned &amp; Notes</h3>
+<h4>Out of Memory (OOM)</h4>
+<p>As alluded to earlier, memory was the biggest issue I faced in getting off the 100k requests. In fact, the program would often die around 65-75% of the way through the requests as the memory usage continued to grow. </p>
+<p>I found the <a href="https://stackoverflow.com/questions/726690/who-killed-my-process-and-why"><em>Who "Killed" my process and why?</em></a> thread on Stack Overflow particularly helpful in learing about the Linux kernel's OOM killer. It led to me to an <a href="https://backdrift.org/oom-killer-how-to-create-oom-exclusions-in-linux">article</a> with a command that disables the kernel's OOM killer on a certain process (our main program), which did the trick:</p>
+<p><code>$ echo -17 &gt; /proc/$PID/oom_score_adj</code></p>
+<p>I used <code>$ ps aux | less</code> to get the process ID (<code>$PID</code> in the above command) of the program.</p>
+<h4>Sockets</h4>
+<p>Asynchronous requests can be sped up by using more sockets, generally. <code>CONNECTIONS</code> in our main program is set to 1024 because that's the common default for open files (another tidbit - "everything in Unix is a file") on most operating systems.</p>
+  </div>
+  <div class="tag-cloud">
+    <p>
+      <a href="https://aaeissa.github.io/tag/python.html">Python</a>
+      <a href="https://aaeissa.github.io/tag/security.html">Security</a>
+    </p>
+  </div>
+
+
+
+
+</article>
+
+    <footer>
+<p>&copy; Ahmed Eissa 2017</p>
+<p>    Powered by <a href="http://getpelican.com" target="_blank">Pelican</a> - <a href="https://github.com/alexandrevicenzi/flex" target="_blank">Flex</a> theme by <a href="http://alexandrevicenzi.com" target="_blank">Alexandre Vicenzi</a>
+</p>    </footer>
+  </main>
+
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " Ahmed Eissa ",
+  "url" : "https://aaeissa.github.io",
+  "image": "/images/profile_pic.jpeg",
+  "description": "Exploring the intersection of technology and policy."
+}
+</script>
+</body>
+</html>
