@@ -186,8 +186,8 @@
 
 
 &lt;div&gt;
-    &lt;a href="https://plot.ly/~ahmedeissa/104/?share_key=KImZFxFJzAE5lbG6S6AlD5" target="_blank" title="plot from API (5)" style="display: block; text-align: center;"&gt;&lt;img src="https://plot.ly/~ahmedeissa/104.png?share_key=KImZFxFJzAE5lbG6S6AlD5" alt="plot from API (5)" style="max-width: 100%;width: 600px;"  width="600" onerror="this.onerror=null;this.src='https://plot.ly/404.png';" /&gt;&lt;/a&gt;
-    &lt;script data-plotly="ahmedeissa:104" sharekey-plotly="KImZFxFJzAE5lbG6S6AlD5" src="https://plot.ly/embed.js" async&gt;&lt;/script&gt;
+    &lt;a href="https://plot.ly/~ahmedeissa/106/?share_key=D2D5Liuw4w9RQ4S0KMxx6f" target="_blank" title="plot from API" style="display: block; text-align: center;"&gt;&lt;img src="https://plot.ly/~ahmedeissa/106.png?share_key=D2D5Liuw4w9RQ4S0KMxx6f" alt="plot from API" style="max-width: 100%;width: 600px;"  width="600" onerror="this.onerror=null;this.src='https://plot.ly/404.png';" /&gt;&lt;/a&gt;
+    &lt;script data-plotly="ahmedeissa:106" sharekey-plotly="D2D5Liuw4w9RQ4S0KMxx6f" src="https://plot.ly/embed.js" async&gt;&lt;/script&gt;
 &lt;/div&gt;
 
 &lt;p&gt;As expected, the "&lt;em&gt;contact:&lt;/em&gt;" field is the most common, followed by "&lt;em&gt;policy:&lt;/em&gt;". What's interesting though, is "&lt;em&gt;hiring:&lt;/em&gt;" as the third most common directive. This directive was only included in the &lt;a href="https://tools.ietf.org/html/draft-foudil-securitytxt-03"&gt;third draft&lt;/a&gt; of the RFC and is already adopted more than other directives that were included in the earliest versions of the initiative. It's likely that organizations were independently including hiring information in their security.txt files, which caught on with those leading project. &lt;/p&gt;
